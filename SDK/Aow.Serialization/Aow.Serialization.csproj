@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net451</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>Aow2.Serialization</AssemblyName>
+    <RootNamespace>Aow2.Serialization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utils\Utils.Core\Utils.Core.csproj" />
+  </ItemGroup>
+</Project>
