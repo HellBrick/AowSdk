@@ -57,3 +57,32 @@ And dictionaries obviously use the keys as IDs and the values as, well, values.
 
 The last important thing here is the fact that collections (both lists and dictionaries) can store instances of virtual classes.
 Since different items in such collections may have different sets of fields, the serialized items have their binary representations prefixed by class IDs - hardcoded `int` values that unambiguously resolve the specific class.
+
+## Aow.Core
+
+This is the core project of the SDK (hence the name).
+It mostly consists of tons of classes that describe resource entities of the game and have their structure and serialization IDs reverse engineered.
+It also implements the additional logic that the game applies to its files on top of its serialization format (checksums, compression, encryption),
+providing higher-level API for working with the game resources.
+
+Most of the work here revolved around the mod files.
+An entry point to examining mods is static `ModManager` that allows enumerating through the meta info about all installed mods and the active mod.
+Both APIs return instances of `ModInfo`, which has an `Open` method that loads the contents of the mod from disk and returns an `AowMod` instance
+that provides access to the actual mod data.
+
+Another big cluster of data here was produced by researching the map format.
+The API here is easier: there's a static `AowMap.Open` method that loads a map (or a save, they are basically the same thing)
+and returns it as an instance of `AowMap` class.
+
+You should find the classes in this assembly to have all their fields listed with correct field IDs.
+However, not all of them have been fully reverse engineered, so you'll find two kinds of missing info here.
+
+The first kind is the field semantics: some of the fields don't have meaningful names because their meaning have not been discovered,
+typically because they proved to be difficult to analyze and/or not important for our work.
+
+The second kind is the field types: some fields have a type of `UnknownData`.
+This class is a universal placeholder that deserializes value as a byte array and serializes it back untouched,
+thus allowing to edit parts of the resources that were reverse engineered without losing data of the parts that were not.
+Most of `UnknownData` fields are actually normal collections and classes that simply didn't contain anything useful for MPE, so they were ignored.
+There are exceptions though: for example, `MapLevel.Data` is actually a collection of map level hexagons and objects
+that is stored in a different way from the normal resource collections and therefore needs an `ICustomFormatted` implementation that I never got around to write.
