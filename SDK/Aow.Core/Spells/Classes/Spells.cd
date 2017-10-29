@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Aow2.Spells.AirMasterySpell" Collapsed="true">
+    <Position X="68" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\AirMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.AlterNodeSpell" Collapsed="true">
+    <Position X="225.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\AlterNodeSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.AnarchySpell" Collapsed="true">
+    <Position X="230" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\AnarchySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.AnimateDeadSpell" Collapsed="true">
+    <Position X="36.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\AnimateDeadSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.AnimateHeroSpell" Collapsed="true">
+    <Position X="241.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\AnimateHeroSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.AnimateRuinsSpell" Collapsed="true">
+    <Position X="234.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\AnimateRuinsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.BanishSpell" Collapsed="true">
+    <Position X="43.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\BanishSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.BindSummonedSpell" Collapsed="true">
+    <Position X="45.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\BindSummonedSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.BlessSpell" Collapsed="true">
+    <Position X="180.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\BlessSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.BlindingFlashESpell" Collapsed="true">
+    <Position X="29.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\BlindingFlashESpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CallHeroSpell" Collapsed="true">
+    <Position X="245.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CallHeroSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CallOfTheForestSpell" Collapsed="true">
+    <Position X="124.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CallOfTheForestSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.TCGlobalEffectSpell" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\TCGlobalEffectSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CityPlagueSpell" Collapsed="true">
+    <Position X="227.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CityPlagueSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CityQuakeSpell" Collapsed="true">
+    <Position X="232.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CityQuakeSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CitySpell" Collapsed="true">
+    <Position X="233.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CitySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CitySpySpell" Collapsed="true">
+    <Position X="92.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CitySpySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ClearTerrainSpell" Collapsed="true">
+    <Position X="205.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ClearTerrainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CombatSpell" Collapsed="true">
+    <Position X="32" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CombatSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CombustionESpell" Collapsed="true">
+    <Position X="27.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CombustionESpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ConcealmentSpell" Collapsed="true">
+    <Position X="182.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ConcealmentSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CosmicSpraySpell" Collapsed="true">
+    <Position X="52.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CosmicSpraySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.CosmosMasterySpell" Collapsed="true">
+    <Position X="77" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\CosmosMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DamnationSpell" Collapsed="true">
+    <Position X="126.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DamnationSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DarkGiftSpell" Collapsed="true">
+    <Position X="149" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DarkGiftSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DarklandSpell" Collapsed="true">
+    <Position X="97.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DarklandSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DeathMasterySpell" Collapsed="true">
+    <Position X="70.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DeathMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DeathStormSpell" Collapsed="true">
+    <Position X="212" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DeathStormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DeepFissureSpell" Collapsed="true">
+    <Position X="56.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DeepFissureSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DisjunctionSpell" Collapsed="true">
+    <Position X="243.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DisjunctionSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DispelMagicSpell" Collapsed="true">
+    <Position X="173.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DispelMagicSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DivineStormSpell" Collapsed="true">
+    <Position X="216.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DivineStormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DomainOfDarknessSpell" Collapsed="true">
+    <Position X="117.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DomainOfDarknessSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DomainSpell" Collapsed="true">
+    <Position X="106.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DomainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.DoubleGravitySpell" Collapsed="true">
+    <Position X="14" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\DoubleGravitySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EarthMasterySpell" Collapsed="true">
+    <Position X="81.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EarthMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EarthsAwarenessSpell" Collapsed="true">
+    <Position X="65.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EarthsAwarenessSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EffectSpell" Collapsed="true">
+    <Position X="25.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EffectSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EnchantedPlantSpell" Collapsed="true">
+    <Position X="137.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EnchantedPlantSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EnchantedRoadsSpell" Collapsed="true">
+    <Position X="90.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EnchantedRoadsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EnchantWeaponSpell" Collapsed="true">
+    <Position X="169.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EnchantWeaponSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.TerrainDomainSpell" Collapsed="true">
+    <Position X="99.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\TerrainDomainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.EvilWoodsSpell" Collapsed="true">
+    <Position X="135.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\EvilWoodsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FireDomainSpell" Collapsed="true">
+    <Position X="110.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FireDomainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FireHaloSpell" Collapsed="true">
+    <Position X="185" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FireHaloSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FireMasterySpell" Collapsed="true">
+    <Position X="74.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FireMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FireStormSpell" Collapsed="true">
+    <Position X="223.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FireStormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ForgeBlastSpell" Collapsed="true">
+    <Position X="239" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ForgeBlastSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FreedomSpell" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FreedomSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FreeMovementSpell" Collapsed="true">
+    <Position X="153.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FreeMovementSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FreezeWaterSpell" Collapsed="true">
+    <Position X="142.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FreezeWaterSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.FurySpell" Collapsed="true">
+    <Position X="164.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\FurySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.GeyserSpell" Collapsed="true">
+    <Position X="59" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\GeyserSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.GlobalEnchantmentSpell" Collapsed="true">
+    <Position X="97.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\GlobalEnchantmentSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.GoldenAgeSpell" Collapsed="true">
+    <Position X="106.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\GoldenAgeSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HasteDomainSpell" Collapsed="true">
+    <Position X="113" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HasteDomainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HasteSpell" Collapsed="true">
+    <Position X="187.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HasteSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HealingShowersSpell" Collapsed="true">
+    <Position X="54.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HealingShowersSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HealingSpell" Collapsed="true">
+    <Position X="191.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HealingSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HighPrayerSpell" Collapsed="true">
+    <Position X="63.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HighPrayerSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HolyChampionSpell" Collapsed="true">
+    <Position X="151.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HolyChampionSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.HolyLightSpell" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\HolyLightSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.IceAgeSpell" Collapsed="true">
+    <Position X="101.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\IceAgeSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.IceStormSpell" Collapsed="true">
+    <Position X="214.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\IceStormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.InfectionESpell" Collapsed="true">
+    <Position X="23" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\InfectionESpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.KnockSpell" Collapsed="true">
+    <Position X="38.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\KnockSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.LevelTerrainSpell" Collapsed="true">
+    <Position X="146.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\LevelTerrainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.LifeDomainSpell" Collapsed="true">
+    <Position X="115.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\LifeDomainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.LifeMasterySpell" Collapsed="true">
+    <Position X="72.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\LifeMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.LightningStormSpell" Collapsed="true">
+    <Position X="221" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\LightningStormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.LiquidFormSpell" Collapsed="true">
+    <Position X="194" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\LiquidFormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.MartyrESpell" Collapsed="true">
+    <Position X="32" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\MartyrESpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.MassConfusionSpell" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\MassConfusionSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.MasterySpell" Collapsed="true">
+    <Position X="74.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\MasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.MightyMeekSpell" Collapsed="true">
+    <Position X="158" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\MightyMeekSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.MistCloakSpell" Collapsed="true">
+    <Position X="203" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\MistCloakSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.MudSpell" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\MudSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ornadoSpell" Collapsed="true">
+    <Position X="144.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ornadoSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PanicAttackESpell" Collapsed="true">
+    <Position X="25.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PanicAttackESpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PestilenceSpell" Collapsed="true">
+    <Position X="218.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PestilenceSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PlaceMapObjectSpell" Collapsed="true">
+    <Position X="204.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PlaceMapObjectSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PoisonDomainSpell" Collapsed="true">
+    <Position X="119.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PoisonDomainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PoisonPlantsSpell" Collapsed="true">
+    <Position X="140" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PoisonPlantsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PowerLeakSpell" Collapsed="true">
+    <Position X="128.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PowerLeakSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.PurifyingWaterSpell" Collapsed="true">
+    <Position X="95" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\PurifyingWaterSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.RaiseTerrainSpell" Collapsed="true">
+    <Position X="131" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\RaiseTerrainSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.RecallHeroSpell" Collapsed="true">
+    <Position X="160.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\RecallHeroSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.RegenerateWallsSpell" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\RegenerateWallsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.RejuvenateSpell" Collapsed="true">
+    <Position X="104" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\RejuvenateSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.remorsSpell" Collapsed="true">
+    <Position X="41" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\remorsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ResurgenceSpell" Collapsed="true">
+    <Position X="176" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ResurgenceSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ResurrectHeroSpell" Collapsed="true">
+    <Position X="248" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ResurrectHeroSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.RotSpell" Collapsed="true">
+    <Position X="50" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\RotSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SacredWoodsSpell" Collapsed="true">
+    <Position X="137.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SacredWoodsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SaveVSSpell" Collapsed="true">
+    <Position X="59" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SaveVSSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SeekerSpell" Collapsed="true">
+    <Position X="196.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SeekerSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ShadowLockSpell" Collapsed="true">
+    <Position X="86" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ShadowLockSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ShadowShiftSpell" Collapsed="true">
+    <Position X="155.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ShadowShiftSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ShadowWalkingSpell" Collapsed="true">
+    <Position X="162.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ShadowWalkingSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SkinOfOilSpell" Collapsed="true">
+    <Position X="20.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SkinOfOilSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SpellWardSpell" Collapsed="true">
+    <Position X="83.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SpellWardSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SpidersCurseSpell" Collapsed="true">
+    <Position X="207.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SpidersCurseSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SpringRainsSpell" Collapsed="true">
+    <Position X="108.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SpringRainsSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.StaticShieldSpell" Collapsed="true">
+    <Position X="178.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\StaticShieldSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.StoneSkinSpell" Collapsed="true">
+    <Position X="189.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\StoneSkinSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.StormSpell" Collapsed="true">
+    <Position X="217.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\StormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.StructureSpell" Collapsed="true">
+    <Position X="232.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\StructureSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SuffocateSpell" Collapsed="true">
+    <Position X="61.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SuffocateSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SummonersAuraSpell" Collapsed="true">
+    <Position X="88.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SummonersAuraSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SummonSpell" Collapsed="true">
+    <Position X="133.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SummonSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.SwarmSpell" Collapsed="true">
+    <Position X="34.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\SwarmSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.TargetSelectionSpell" Collapsed="true">
+    <Position X="185" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\TargetSelectionSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.UnholyChampionSpell" Collapsed="true">
+    <Position X="171.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\UnholyChampionSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.UnholyDarknessSpell" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\UnholyDarknessSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.UnitSpell" Collapsed="true">
+    <Position X="173.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\UnitSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.TurnUndeadSpell" Collapsed="true">
+    <Position X="47.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\TurnUndeadSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.ViolentStormSpell" Collapsed="true">
+    <Position X="209.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\ViolentStormSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WatcherSpell" Collapsed="true">
+    <Position X="122" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WatcherSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WaterMasterySpell" Collapsed="true">
+    <Position X="79.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WaterMasterySpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WaterWalkingSpell" Collapsed="true">
+    <Position X="198.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WaterWalkingSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WeakenSpell" Collapsed="true">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WeakenSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WetlandSpell" Collapsed="true">
+    <Position X="99.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WetlandSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WildFireSpell" Collapsed="true">
+    <Position X="200.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WildFireSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WindWalkingSpell" Collapsed="true">
+    <Position X="167" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WindWalkingSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WindWardSpell" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WindWardSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.WitherSpell" Collapsed="true">
+    <Position X="236.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Classes\WitherSpell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Aow2.Spells.Spell" Collapsed="true">
+    <Position X="124.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Spell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
