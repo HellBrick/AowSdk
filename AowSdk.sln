@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aow.Test", "SDK\Aow.Test\Ao
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aow.Core", "SDK\Aow.Core\Aow.Core.csproj", "{74D5FAD2-FD95-4D86-9E23-A9C0C1A75A4A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aow.Graphics", "SDK\Aow.Graphics\Aow.Graphics.csproj", "{76D8708D-8D6F-471D-8E72-1EB31CE853F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{74D5FAD2-FD95-4D86-9E23-A9C0C1A75A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74D5FAD2-FD95-4D86-9E23-A9C0C1A75A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74D5FAD2-FD95-4D86-9E23-A9C0C1A75A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76D8708D-8D6F-471D-8E72-1EB31CE853F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D8708D-8D6F-471D-8E72-1EB31CE853F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D8708D-8D6F-471D-8E72-1EB31CE853F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D8708D-8D6F-471D-8E72-1EB31CE853F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{AF7183EB-D195-4F94-9743-1831D76529C6} = {76EA848F-FD7D-455C-9ED1-5B28E62AC39C}
 		{A948C1A4-DD2B-4ED8-B754-0304E002F48E} = {0CE19C3C-58C6-4725-803B-B805BA1C8B17}
 		{74D5FAD2-FD95-4D86-9E23-A9C0C1A75A4A} = {0CE19C3C-58C6-4725-803B-B805BA1C8B17}
+		{76D8708D-8D6F-471D-8E72-1EB31CE853F2} = {0CE19C3C-58C6-4725-803B-B805BA1C8B17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB86CD07-29BB-4999-99C3-9D7D4BC63FAF}
