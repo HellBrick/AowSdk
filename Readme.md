@@ -1,4 +1,4 @@
-## Intro
+﻿## Intro
 
 This is a public snapshot of the AoW 2 SDK created as a part of MP Evolution project to analyze and manipulate the game files.
 Originally there were no plans to release it, because it could easily be used for subtle and untraceable cheating, which would ruin the competitive gaming.
@@ -86,3 +86,10 @@ thus allowing to edit parts of the resources that were reverse engineered withou
 Most of `UnknownData` fields are actually normal collections and classes that simply didn't contain anything useful for MPE, so they were ignored.
 There are exceptions though: for example, `MapLevel.Data` is actually a collection of map level hexagons and objects
 that is stored in a different way from the normal resource collections and therefore needs an `ICustomFormatted` implementation that I never got around to write.
+
+## Aow.Graphics
+
+This project contains some rudimentary routines to work with the game image library files (.ilb).
+It provides capabilities for parsing .ilb files through `ImageLibrary` and then loading specific images as WPF `BitmapSource` through `ImageLoader`.
+Only a small subset of the graphic formats that was needed for the mod editor is actually supported.
+
