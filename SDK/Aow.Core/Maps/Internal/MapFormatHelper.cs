@@ -60,9 +60,9 @@ namespace Aow2.Maps.Internal
 
 		public static void WriteToStream( AowMap map, Stream outStream )
 		{
-			using ( MapFormatHelper formatHelper = FromMap( map ) )
+			using ( MapFormatHelper helper = FromMap( map ) )
 			{
-				formatHelper.PackData( outStream );
+				helper.PackData( outStream );
 			}
 		}
 
