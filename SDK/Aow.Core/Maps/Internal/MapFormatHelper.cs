@@ -19,28 +19,7 @@ namespace Aow2.Maps.Internal
 		public static AowMap ReadMapFromFile( string filename )
 		{
 			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
-			using ( MapFormatHelper helper = FromStream( inputStream ) )
-			{
-				helper.DataStream.Position = 0;
-				AowMap map = _mapSerializer.Deserialize( helper.DataStream );
-				map.ModID = helper.ModID;
-				map.ClassID = helper.MapClassID;
-				return map;
-			}
-		}
 
-		public static MapHeader ReadHeaderFromFile( string filename )
-		{
-			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
-			using ( MapFormatHelper helper = FromStream( inputStream ) )
-			{
-				helper.HeaderStream.Position = 0;
-				return _headerSerializer.Deserialize( helper.HeaderStream ) as MapHeader;
-			}
-		}
-
-		public static MapFormatHelper FromStream( Stream inputStream )
-		{
 			MapFormatHelper helper = new MapFormatHelper();
 			BinaryReader reader = new BinaryReader( inputStream );
 
@@ -67,7 +46,51 @@ namespace Aow2.Maps.Internal
 					return dataStream;
 				} );
 
-			return helper;
+			using ( helper )
+			{
+				helper.DataStream.Position = 0;
+				AowMap map = _mapSerializer.Deserialize( helper.DataStream );
+				map.ModID = helper.ModID;
+				map.ClassID = helper.MapClassID;
+				return map;
+			}
+		}
+
+		public static MapHeader ReadHeaderFromFile( string filename )
+		{
+			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
+
+			MapFormatHelper helper = new MapFormatHelper();
+			BinaryReader reader = new BinaryReader( inputStream );
+
+			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+			helper.ModID = modId;
+			helper.MapClassID = mapClassId;
+
+			//	Header stream
+			helper.HeaderStream = new MemoryStream();
+			inputStream.CopyBytesTo( helper.HeaderStream, headerLength );
+
+			//	CFS signature
+			ValidateSignature( reader, _signatureCFS );
+
+			//	Data stream
+			helper._dataStream = new Lazy<Stream>(
+				() =>
+				{
+					MemoryStream dataStream = new MemoryStream();
+					using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
+					{
+						zlib.CopyTo( dataStream );
+					}
+					return dataStream;
+				} );
+
+			using ( helper )
+			{
+				helper.HeaderStream.Position = 0;
+				return _headerSerializer.Deserialize( helper.HeaderStream ) as MapHeader;
+			}
 		}
 
 		private static (int modId, int mapClassId, int headerLength) ReadPreHeader( Stream inputStream )
