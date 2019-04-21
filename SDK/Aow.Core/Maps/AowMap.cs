@@ -57,6 +57,15 @@ namespace Aow2.Maps
 			}
 		}
 
+		public byte[] ToBytes()
+		{
+			using ( MemoryStream memory = new MemoryStream() )
+			{
+				MapFormatHelper.WriteToStream( this, memory );
+				return memory.ToArray();
+			}
+		}
+
 		public int ModID { get; set; }
 		public int ClassID { get; set; }
 
