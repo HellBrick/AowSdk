@@ -54,10 +54,9 @@ namespace Aow2.Maps.Internal
 
 				//	Header stream
 				MemoryStream headerStream = new MemoryStream();
-				inputStream.CopyBytesTo( headerStream, headerLength );
-
 				using ( headerStream )
 				{
+					inputStream.CopyBytesTo( headerStream, headerLength );
 					headerStream.Position = 0;
 					return _headerSerializer.Deserialize( headerStream ) as MapHeader;
 				}
