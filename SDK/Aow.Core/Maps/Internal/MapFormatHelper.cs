@@ -42,18 +42,9 @@ namespace Aow2.Maps.Internal
 			MapFormatHelper helper = new MapFormatHelper();
 			BinaryReader reader = new BinaryReader( inputStream );
 
-			//	Signature1
-			int signature1 = reader.ReadInt32();
-			ValidateSignature( _signature1, signature1, inputStream.Position - sizeof( int ) );
-
-			//	Signature 2
-			int signature2 = reader.ReadInt32();
-
-			//	Header length, IDs
-			inputStream.Position += 4; //	always 0
-			int headerLength = reader.ReadInt32();
-			helper.ModID = reader.ReadInt32();
-			helper.MapClassID = reader.ReadInt32();
+			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+			helper.ModID = modId;
+			helper.MapClassID = mapClassId;
 
 			//	Header stream
 			helper.HeaderStream = new MemoryStream();
@@ -75,6 +66,26 @@ namespace Aow2.Maps.Internal
 				} );
 
 			return helper;
+		}
+
+		private static (int modId, int mapClassId, int headerLength) ReadPreHeader( Stream inputStream )
+		{
+			BinaryReader reader = new BinaryReader( inputStream );
+
+			//	Signature1
+			int signature1 = reader.ReadInt32();
+			ValidateSignature( _signature1, signature1, inputStream.Position - sizeof( int ) );
+
+			//	Signature 2
+			int signature2 = reader.ReadInt32();
+
+			//	Header length, IDs
+			inputStream.Position += 4; //	always 0
+			int headerLength = reader.ReadInt32();
+			int modID = reader.ReadInt32();
+			int mapClassID = reader.ReadInt32();
+
+			return (modID, mapClassID, headerLength);
 		}
 
 		public static void WriteToStream( AowMap map, Stream outStream )
