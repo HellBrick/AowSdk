@@ -7,7 +7,7 @@ using Utils.IO;
 
 namespace Aow2.Maps.Internal
 {
-	internal class MapFormatHelper : IDisposable
+	internal static class MapFormatHelper
 	{
 		private const int _signature1 = 0x00000018;
 		private const int _signature2 = 0x00584d48;
@@ -106,23 +106,6 @@ namespace Aow2.Maps.Internal
 					dataStream.CopyTo( zlib );
 				}
 			}
-		}
-
-		private MapFormatHelper()
-		{
-		}
-
-		public int ModID { get; private set; }
-		public int MapClassID { get; private set; }
-		public Stream HeaderStream { get; private set; }
-
-		private Lazy<Stream> _dataStream;
-		public Stream DataStream => _dataStream.Value;
-
-		public void Dispose()
-		{
-			HeaderStream.Dispose();
-			DataStream.Dispose();
 		}
 
 		private static void ValidateSignature( int expected, int actual, long streamPosition )
