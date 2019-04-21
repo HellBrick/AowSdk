@@ -60,36 +60,36 @@ namespace Aow2.Maps.Internal
 
 		public static void WriteToStream( AowMap map, Stream outStream )
 		{
-			MapFormatHelper helper = new MapFormatHelper();
-			helper.ModID = map.ModID;
-			helper.MapClassID = map.ClassID;
+			int modID = map.ModID;
+			int mapClassID = map.ClassID;
 
-			helper.HeaderStream = new MemoryStream();
-			_headerSerializer.Serialize( helper.HeaderStream, map.PreviewHeader );
+			MemoryStream headerStream = new MemoryStream();
+			_headerSerializer.Serialize( headerStream, map.PreviewHeader );
 
-			helper._dataStream = new Lazy<Stream>( () => new MemoryStream() );
-			_mapSerializer.Serialize( helper.DataStream, map );
+			MemoryStream dataStream = new MemoryStream();
+			_mapSerializer.Serialize( dataStream, map );
 
-			using ( helper )
+			using ( dataStream )
+			using ( headerStream )
 			{
 				BinaryWriter writer = new BinaryWriter( outStream );
 				writer.Write( _signature1 );
 				writer.Write( _signature2 );
 				writer.Write( (int) 0 );
 
-				writer.Write( (int) helper.HeaderStream.Length );
-				writer.Write( helper.ModID );
-				writer.Write( helper.MapClassID );
+				writer.Write( (int) headerStream.Length );
+				writer.Write( modID );
+				writer.Write( mapClassID );
 
-				helper.HeaderStream.Position = 0;
-				helper.HeaderStream.CopyTo( outStream );
+				headerStream.Position = 0;
+				headerStream.CopyTo( outStream );
 
 				writer.Write( _signatureCFS );
 
 				using ( ZlibStream zlib = new ZlibStream( outStream, CompressionMode.Compress ) )
 				{
-					helper.DataStream.Position = 0;
-					helper.DataStream.CopyTo( zlib );
+					dataStream.Position = 0;
+					dataStream.CopyTo( zlib );
 				}
 			}
 		}
