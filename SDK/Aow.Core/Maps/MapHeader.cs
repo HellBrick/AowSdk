@@ -1,4 +1,5 @@
-﻿using Aow2.Maps.Internal;
+﻿using System.IO;
+using Aow2.Maps.Internal;
 
 namespace Aow2.Maps
 {
@@ -16,9 +17,9 @@ namespace Aow2.Maps
 
 		public static MapHeader FromFile( string filename )
 		{
-			using ( MapFormatHelper helper = MapFormatHelper.FromFile( filename ) )
+			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				return helper.DeserializeHeader();
+				return MapFormatHelper.ReadHeaderFromStream( inputStream );
 			}
 		}
 

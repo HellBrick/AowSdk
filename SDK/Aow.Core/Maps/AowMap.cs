@@ -33,20 +33,36 @@ namespace Aow2.Maps
 
 		public static AowMap FromFile( string filename )
 		{
-			using ( MapFormatHelper formatHelper = MapFormatHelper.FromFile( filename ) )
+			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				return formatHelper.DeserializeMap();
+				return FromStream( inputStream );
 			}
 		}
+
+		public static AowMap FromBytes( byte[] bytes )
+		{
+			using ( MemoryStream memory = new MemoryStream( bytes ) )
+			{
+				return FromStream( memory );
+			}
+		}
+
+		public static AowMap FromStream( Stream inputStream ) => MapFormatHelper.ReadMapFromStream( inputStream );
 
 		public void Save( string filename )
 		{
 			using ( FileStream outStream = new FileStream( filename, FileMode.Create ) )
 			{
-				using ( MapFormatHelper formatHelper = MapFormatHelper.FromMap( this ) )
-				{
-					formatHelper.PackData( outStream );
-				}
+				MapFormatHelper.WriteToStream( this, outStream );
+			}
+		}
+
+		public byte[] ToBytes()
+		{
+			using ( MemoryStream memory = new MemoryStream() )
+			{
+				MapFormatHelper.WriteToStream( this, memory );
+				return memory.ToArray();
 			}
 		}
 
