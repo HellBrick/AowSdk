@@ -39,6 +39,14 @@ namespace Aow2.Maps
 			}
 		}
 
+		public static AowMap FromBytes( byte[] bytes )
+		{
+			using ( MemoryStream memory = new MemoryStream( bytes ) )
+			{
+				return FromStream( memory );
+			}
+		}
+
 		public static AowMap FromStream( Stream inputStream ) => MapFormatHelper.ReadMapFromStream( inputStream );
 
 		public void Save( string filename )
