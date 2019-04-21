@@ -18,7 +18,8 @@ namespace Aow2.Maps.Internal
 
 		public static AowMap ReadMapFromFile( string filename )
 		{
-			using ( MapFormatHelper helper = FromStream( new FileStream( filename, FileMode.Open, FileAccess.Read ) ) )
+			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
+			using ( MapFormatHelper helper = FromStream( inputStream ) )
 			{
 				helper.DataStream.Position = 0;
 				AowMap map = _mapSerializer.Deserialize( helper.DataStream );
@@ -30,7 +31,8 @@ namespace Aow2.Maps.Internal
 
 		public static MapHeader ReadHeaderFromFile( string filename )
 		{
-			using ( MapFormatHelper helper = FromStream( new FileStream( filename, FileMode.Open, FileAccess.Read ) ) )
+			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
+			using ( MapFormatHelper helper = FromStream( inputStream ) )
 			{
 				helper.HeaderStream.Position = 0;
 				return _headerSerializer.Deserialize( helper.HeaderStream ) as MapHeader;
