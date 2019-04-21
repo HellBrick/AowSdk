@@ -50,7 +50,7 @@ namespace Aow2.Maps.Internal
 		{
 			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+				int headerLength = ReadPreHeader( inputStream ).headerLength;
 
 				using ( MemoryStream headerStream = new MemoryStream() )
 				{
