@@ -54,25 +54,12 @@ namespace Aow2.Maps.Internal
 		{
 			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				BinaryReader reader = new BinaryReader( inputStream );
-
 				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
 
 				//	Header stream
 				MemoryStream headerStream = new MemoryStream();
 				inputStream.CopyBytesTo( headerStream, headerLength );
 
-				//	CFS signature
-				ValidateSignature( reader, _signatureCFS );
-
-				//	Data stream
-				MemoryStream dataStream = new MemoryStream();
-				using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
-				{
-					zlib.CopyTo( dataStream );
-				}
-
-				using ( dataStream )
 				using ( headerStream )
 				{
 					headerStream.Position = 0;
