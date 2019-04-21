@@ -43,10 +43,7 @@ namespace Aow2.Maps
 		{
 			using ( FileStream outStream = new FileStream( filename, FileMode.Create ) )
 			{
-				using ( MapFormatHelper formatHelper = MapFormatHelper.FromMap( this ) )
-				{
-					formatHelper.PackData( outStream );
-				}
+				MapFormatHelper.WriteToStream( this, outStream );
 			}
 		}
 

@@ -58,6 +58,14 @@ namespace Aow2.Maps.Internal
 			return helper;
 		}
 
+		public static void WriteToStream( AowMap map, Stream outStream )
+		{
+			using ( MapFormatHelper formatHelper = FromMap( map ) )
+			{
+				formatHelper.PackData( outStream );
+			}
+		}
+
 		public static MapFormatHelper FromMap( AowMap map )
 		{
 			MapFormatHelper helper = new MapFormatHelper();
