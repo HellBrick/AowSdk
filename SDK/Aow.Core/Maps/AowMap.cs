@@ -35,9 +35,11 @@ namespace Aow2.Maps
 		{
 			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				return MapFormatHelper.ReadMapFromStream( inputStream );
+				return FromStream( inputStream );
 			}
 		}
+
+		public static AowMap FromStream( Stream inputStream ) => MapFormatHelper.ReadMapFromStream( inputStream );
 
 		public void Save( string filename )
 		{
