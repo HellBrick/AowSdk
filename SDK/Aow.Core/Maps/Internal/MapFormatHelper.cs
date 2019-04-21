@@ -18,9 +18,9 @@ namespace Aow2.Maps.Internal
 
 		public static AowMap ReadMapFromFile( string filename )
 		{
-			using ( MapFormatHelper formatHelper = FromFile( filename ) )
+			using ( MapFormatHelper helper = FromFile( filename ) )
 			{
-				return formatHelper.DeserializeMap();
+				return helper.DeserializeMap();
 			}
 		}
 
