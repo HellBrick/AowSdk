@@ -64,14 +64,14 @@ namespace Aow2.Maps.Internal
 			int mapClassID = map.ClassID;
 
 			MemoryStream headerStream = new MemoryStream();
-			_headerSerializer.Serialize( headerStream, map.PreviewHeader );
-
 			MemoryStream dataStream = new MemoryStream();
-			_mapSerializer.Serialize( dataStream, map );
 
 			using ( dataStream )
 			using ( headerStream )
 			{
+				_headerSerializer.Serialize( headerStream, map.PreviewHeader );
+				_mapSerializer.Serialize( dataStream, map );
+
 				BinaryWriter writer = new BinaryWriter( outStream );
 				writer.Write( _signature1 );
 				writer.Write( _signature2 );
