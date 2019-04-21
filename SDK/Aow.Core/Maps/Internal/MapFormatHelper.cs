@@ -72,7 +72,25 @@ namespace Aow2.Maps.Internal
 
 			using ( helper )
 			{
-				helper.PackData( outStream );
+				BinaryWriter writer = new BinaryWriter( outStream );
+				writer.Write( _signature1 );
+				writer.Write( _signature2 );
+				writer.Write( (int) 0 );
+
+				writer.Write( (int) helper.HeaderStream.Length );
+				writer.Write( helper.ModID );
+				writer.Write( helper.MapClassID );
+
+				helper.HeaderStream.Position = 0;
+				helper.HeaderStream.CopyTo( outStream );
+
+				writer.Write( _signatureCFS );
+
+				using ( ZlibStream zlib = new ZlibStream( outStream, CompressionMode.Compress ) )
+				{
+					helper.DataStream.Position = 0;
+					helper.DataStream.CopyTo( zlib );
+				}
 			}
 		}
 
@@ -100,29 +118,6 @@ namespace Aow2.Maps.Internal
 			map.ModID = ModID;
 			map.ClassID = MapClassID;
 			return map;
-		}
-
-		public void PackData( Stream outStream )
-		{
-			BinaryWriter writer = new BinaryWriter( outStream );
-			writer.Write( _signature1 );
-			writer.Write( _signature2 );
-			writer.Write( (int) 0 );
-
-			writer.Write( (int) HeaderStream.Length );
-			writer.Write( ModID );
-			writer.Write( MapClassID );
-
-			HeaderStream.Position = 0;
-			HeaderStream.CopyTo( outStream );
-
-			writer.Write( _signatureCFS );
-
-			using ( ZlibStream zlib = new ZlibStream( outStream, CompressionMode.Compress ) )
-			{
-				DataStream.Position = 0;
-				DataStream.CopyTo( zlib );
-			}
 		}
 
 		public void Dispose()
