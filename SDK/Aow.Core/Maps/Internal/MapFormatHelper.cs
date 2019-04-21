@@ -16,6 +16,14 @@ namespace Aow2.Maps.Internal
 		private static AowSerializer<AowMap> _mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
 		private static AowSerializer<MapHeaderBase> _headerSerializer = new AowSerializer<MapHeaderBase>( hasRootWrapper: true );
 
+		public static AowMap ReadMapFromFile( string filename )
+		{
+			using ( MapFormatHelper formatHelper = FromFile( filename ) )
+			{
+				return formatHelper.DeserializeMap();
+			}
+		}
+
 		public static MapFormatHelper FromFile( string filename ) => FromStream( new FileStream( filename, FileMode.Open, FileAccess.Read ) );
 
 		public static MapFormatHelper FromStream( Stream inputStream )
