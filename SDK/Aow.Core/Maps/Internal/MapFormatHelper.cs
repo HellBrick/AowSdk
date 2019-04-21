@@ -24,6 +24,14 @@ namespace Aow2.Maps.Internal
 			}
 		}
 
+		public static MapHeader ReadHeaderFromFile( string filename )
+		{
+			using ( MapFormatHelper helper = FromFile( filename ) )
+			{
+				return helper.DeserializeHeader();
+			}
+		}
+
 		public static MapFormatHelper FromFile( string filename ) => FromStream( new FileStream( filename, FileMode.Open, FileAccess.Read ) );
 
 		public static MapFormatHelper FromStream( Stream inputStream )

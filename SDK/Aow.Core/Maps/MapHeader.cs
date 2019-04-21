@@ -14,13 +14,7 @@ namespace Aow2.Maps
 		{
 		}
 
-		public static MapHeader FromFile( string filename )
-		{
-			using ( MapFormatHelper helper = MapFormatHelper.FromFile( filename ) )
-			{
-				return helper.DeserializeHeader();
-			}
-		}
+		public static MapHeader FromFile( string filename ) => MapFormatHelper.ReadHeaderFromFile( filename );
 
 		[Field( 0x1e )] public byte PlayersCount { get; set; }
 		[Field( 0x21 )] public int Day { get; set; }
