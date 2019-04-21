@@ -63,10 +63,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				Expression.Loop(
 					Expression.IfThenElse(
 						Expression.LessThan(
-							Expression.Add(
-								Expression.Property( context.ParseFieldParams.Result, _listCount ),
-								Expression.Constant( 1 ) ),
-
+							Expression.Property( context.ParseFieldParams.Result, _listCount ),
 							context.Key ),
 
 						Expression.Call( context.ParseFieldParams.Result, _listAdd, Expression.Default( ItemType ) ),
