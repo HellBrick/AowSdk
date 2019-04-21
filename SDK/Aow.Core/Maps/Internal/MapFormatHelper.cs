@@ -20,38 +20,31 @@ namespace Aow2.Maps.Internal
 		{
 			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
 
-			MapFormatHelper helper = new MapFormatHelper();
 			BinaryReader reader = new BinaryReader( inputStream );
 
 			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
-			helper.ModID = modId;
-			helper.MapClassID = mapClassId;
 
 			//	Header stream
-			helper.HeaderStream = new MemoryStream();
-			inputStream.CopyBytesTo( helper.HeaderStream, headerLength );
+			MemoryStream headerStream = new MemoryStream();
+			inputStream.CopyBytesTo( headerStream, headerLength );
 
 			//	CFS signature
 			ValidateSignature( reader, _signatureCFS );
 
 			//	Data stream
-			helper._dataStream = new Lazy<Stream>(
-				() =>
-				{
-					MemoryStream dataStream = new MemoryStream();
-					using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
-					{
-						zlib.CopyTo( dataStream );
-					}
-					return dataStream;
-				} );
-
-			using ( helper )
+			MemoryStream dataStream = new MemoryStream();
+			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
 			{
-				helper.DataStream.Position = 0;
-				AowMap map = _mapSerializer.Deserialize( helper.DataStream );
-				map.ModID = helper.ModID;
-				map.ClassID = helper.MapClassID;
+				zlib.CopyTo( dataStream );
+			}
+
+			using ( dataStream )
+			using ( headerStream )
+			{
+				dataStream.Position = 0;
+				AowMap map = _mapSerializer.Deserialize( dataStream );
+				map.ModID = modId;
+				map.ClassID = mapClassId;
 				return map;
 			}
 		}
@@ -60,36 +53,29 @@ namespace Aow2.Maps.Internal
 		{
 			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
 
-			MapFormatHelper helper = new MapFormatHelper();
 			BinaryReader reader = new BinaryReader( inputStream );
 
 			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
-			helper.ModID = modId;
-			helper.MapClassID = mapClassId;
 
 			//	Header stream
-			helper.HeaderStream = new MemoryStream();
-			inputStream.CopyBytesTo( helper.HeaderStream, headerLength );
+			MemoryStream headerStream = new MemoryStream();
+			inputStream.CopyBytesTo( headerStream, headerLength );
 
 			//	CFS signature
 			ValidateSignature( reader, _signatureCFS );
 
 			//	Data stream
-			helper._dataStream = new Lazy<Stream>(
-				() =>
-				{
-					MemoryStream dataStream = new MemoryStream();
-					using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
-					{
-						zlib.CopyTo( dataStream );
-					}
-					return dataStream;
-				} );
-
-			using ( helper )
+			MemoryStream dataStream = new MemoryStream();
+			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
 			{
-				helper.HeaderStream.Position = 0;
-				return _headerSerializer.Deserialize( helper.HeaderStream ) as MapHeader;
+				zlib.CopyTo( dataStream );
+			}
+
+			using ( dataStream )
+			using ( headerStream )
+			{
+				headerStream.Position = 0;
+				return _headerSerializer.Deserialize( headerStream ) as MapHeader;
 			}
 		}
 
