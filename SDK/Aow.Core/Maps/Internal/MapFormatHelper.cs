@@ -60,14 +60,6 @@ namespace Aow2.Maps.Internal
 
 		public static void WriteToStream( AowMap map, Stream outStream )
 		{
-			using ( MapFormatHelper helper = FromMap( map ) )
-			{
-				helper.PackData( outStream );
-			}
-		}
-
-		public static MapFormatHelper FromMap( AowMap map )
-		{
 			MapFormatHelper helper = new MapFormatHelper();
 			helper.ModID = map.ModID;
 			helper.MapClassID = map.ClassID;
@@ -78,7 +70,10 @@ namespace Aow2.Maps.Internal
 			helper._dataStream = new Lazy<Stream>( () => new MemoryStream() );
 			_mapSerializer.Serialize( helper.DataStream, map );
 
-			return helper;
+			using ( helper )
+			{
+				helper.PackData( outStream );
+			}
 		}
 
 		private MapFormatHelper()
