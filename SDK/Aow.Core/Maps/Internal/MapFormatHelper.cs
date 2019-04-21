@@ -25,8 +25,7 @@ namespace Aow2.Maps.Internal
 				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
 
 				//	Header stream
-				MemoryStream headerStream = new MemoryStream();
-				inputStream.CopyBytesTo( headerStream, headerLength );
+				inputStream.Position += headerLength;
 
 				//	CFS signature
 				ValidateSignature( reader, _signatureCFS );
@@ -39,7 +38,6 @@ namespace Aow2.Maps.Internal
 				}
 
 				using ( dataStream )
-				using ( headerStream )
 				{
 					dataStream.Position = 0;
 					AowMap map = _mapSerializer.Deserialize( dataStream );
