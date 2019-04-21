@@ -18,64 +18,66 @@ namespace Aow2.Maps.Internal
 
 		public static AowMap ReadMapFromFile( string filename )
 		{
-			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
-
-			BinaryReader reader = new BinaryReader( inputStream );
-
-			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
-
-			//	Header stream
-			MemoryStream headerStream = new MemoryStream();
-			inputStream.CopyBytesTo( headerStream, headerLength );
-
-			//	CFS signature
-			ValidateSignature( reader, _signatureCFS );
-
-			//	Data stream
-			MemoryStream dataStream = new MemoryStream();
-			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
+			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				zlib.CopyTo( dataStream );
-			}
+				BinaryReader reader = new BinaryReader( inputStream );
 
-			using ( dataStream )
-			using ( headerStream )
-			{
-				dataStream.Position = 0;
-				AowMap map = _mapSerializer.Deserialize( dataStream );
-				map.ModID = modId;
-				map.ClassID = mapClassId;
-				return map;
+				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+
+				//	Header stream
+				MemoryStream headerStream = new MemoryStream();
+				inputStream.CopyBytesTo( headerStream, headerLength );
+
+				//	CFS signature
+				ValidateSignature( reader, _signatureCFS );
+
+				//	Data stream
+				MemoryStream dataStream = new MemoryStream();
+				using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
+				{
+					zlib.CopyTo( dataStream );
+				}
+
+				using ( dataStream )
+				using ( headerStream )
+				{
+					dataStream.Position = 0;
+					AowMap map = _mapSerializer.Deserialize( dataStream );
+					map.ModID = modId;
+					map.ClassID = mapClassId;
+					return map;
+				}
 			}
 		}
 
 		public static MapHeader ReadHeaderFromFile( string filename )
 		{
-			FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read );
-
-			BinaryReader reader = new BinaryReader( inputStream );
-
-			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
-
-			//	Header stream
-			MemoryStream headerStream = new MemoryStream();
-			inputStream.CopyBytesTo( headerStream, headerLength );
-
-			//	CFS signature
-			ValidateSignature( reader, _signatureCFS );
-
-			//	Data stream
-			MemoryStream dataStream = new MemoryStream();
-			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress ) )
+			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				zlib.CopyTo( dataStream );
-			}
+				BinaryReader reader = new BinaryReader( inputStream );
 
-			using ( dataStream )
-			using ( headerStream )
-			{
-				headerStream.Position = 0;
-				return _headerSerializer.Deserialize( headerStream ) as MapHeader;
+				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+
+				//	Header stream
+				MemoryStream headerStream = new MemoryStream();
+				inputStream.CopyBytesTo( headerStream, headerLength );
+
+				//	CFS signature
+				ValidateSignature( reader, _signatureCFS );
+
+				//	Data stream
+				MemoryStream dataStream = new MemoryStream();
+				using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
+				{
+					zlib.CopyTo( dataStream );
+				}
+
+				using ( dataStream )
+				using ( headerStream )
+				{
+					headerStream.Position = 0;
+					return _headerSerializer.Deserialize( headerStream ) as MapHeader;
+				}
 			}
 		}
 
