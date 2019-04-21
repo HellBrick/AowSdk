@@ -31,7 +31,13 @@ namespace Aow2.Maps
 			_unitControl = new UnitControl();
 		}
 
-		public static AowMap FromFile( string filename ) => MapFormatHelper.ReadMapFromFile( filename );
+		public static AowMap FromFile( string filename )
+		{
+			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
+			{
+				return MapFormatHelper.ReadMapFromStream( inputStream );
+			}
+		}
 
 		public void Save( string filename )
 		{
