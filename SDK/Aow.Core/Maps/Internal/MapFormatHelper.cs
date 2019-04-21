@@ -63,11 +63,8 @@ namespace Aow2.Maps.Internal
 			int modID = map.ModID;
 			int mapClassID = map.ClassID;
 
-			MemoryStream headerStream = new MemoryStream();
-			MemoryStream dataStream = new MemoryStream();
-
-			using ( dataStream )
-			using ( headerStream )
+			using ( MemoryStream dataStream = new MemoryStream() )
+			using ( MemoryStream headerStream = new MemoryStream() )
 			{
 				_headerSerializer.Serialize( headerStream, map.PreviewHeader );
 				_mapSerializer.Serialize( dataStream, map );
