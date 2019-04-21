@@ -28,7 +28,8 @@ namespace Aow2.Maps.Internal
 		{
 			using ( MapFormatHelper helper = FromStream( new FileStream( filename, FileMode.Open, FileAccess.Read ) ) )
 			{
-				return helper.DeserializeHeader();
+				helper.HeaderStream.Position = 0;
+				return _headerSerializer.Deserialize( helper.HeaderStream ) as MapHeader;
 			}
 		}
 
@@ -115,12 +116,6 @@ namespace Aow2.Maps.Internal
 
 		private Lazy<Stream> _dataStream;
 		public Stream DataStream => _dataStream.Value;
-
-		public MapHeader DeserializeHeader()
-		{
-			HeaderStream.Position = 0;
-			return _headerSerializer.Deserialize( HeaderStream ) as MapHeader;
-		}
 
 		public AowMap DeserializeMap()
 		{
