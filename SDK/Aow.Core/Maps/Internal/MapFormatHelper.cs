@@ -20,7 +20,11 @@ namespace Aow2.Maps.Internal
 		{
 			using ( MapFormatHelper helper = FromStream( new FileStream( filename, FileMode.Open, FileAccess.Read ) ) )
 			{
-				return helper.DeserializeMap();
+				helper.DataStream.Position = 0;
+				AowMap map = _mapSerializer.Deserialize( helper.DataStream );
+				map.ModID = helper.ModID;
+				map.ClassID = helper.MapClassID;
+				return map;
 			}
 		}
 
@@ -116,15 +120,6 @@ namespace Aow2.Maps.Internal
 
 		private Lazy<Stream> _dataStream;
 		public Stream DataStream => _dataStream.Value;
-
-		public AowMap DeserializeMap()
-		{
-			DataStream.Position = 0;
-			AowMap map = _mapSerializer.Deserialize( DataStream );
-			map.ModID = ModID;
-			map.ClassID = MapClassID;
-			return map;
-		}
 
 		public void Dispose()
 		{
