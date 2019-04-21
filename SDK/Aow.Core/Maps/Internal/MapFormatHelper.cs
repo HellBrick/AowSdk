@@ -20,29 +20,34 @@ namespace Aow2.Maps.Internal
 		{
 			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+				return ReadMapFromStream( inputStream );
+			}
+		}
 
-				//	Header stream
-				inputStream.Position += headerLength;
+		public static AowMap ReadMapFromStream( Stream inputStream )
+		{
+			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
 
-				//	CFS signature
-				ValidateSignature( new BinaryReader( inputStream ), _signatureCFS );
+			//	Header stream
+			inputStream.Position += headerLength;
 
-				//	Data stream
-				MemoryStream dataStream = new MemoryStream();
-				using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
-				{
-					zlib.CopyTo( dataStream );
-				}
+			//	CFS signature
+			ValidateSignature( new BinaryReader( inputStream ), _signatureCFS );
 
-				using ( dataStream )
-				{
-					dataStream.Position = 0;
-					AowMap map = _mapSerializer.Deserialize( dataStream );
-					map.ModID = modId;
-					map.ClassID = mapClassId;
-					return map;
-				}
+			//	Data stream
+			MemoryStream dataStream = new MemoryStream();
+			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
+			{
+				zlib.CopyTo( dataStream );
+			}
+
+			using ( dataStream )
+			{
+				dataStream.Position = 0;
+				AowMap map = _mapSerializer.Deserialize( dataStream );
+				map.ModID = modId;
+				map.ClassID = mapClassId;
+				return map;
 			}
 		}
 
