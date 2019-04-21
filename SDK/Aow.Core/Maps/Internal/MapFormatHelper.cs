@@ -99,7 +99,7 @@ namespace Aow2.Maps.Internal
 			return map;
 		}
 
-		public void PackData( FileStream outStream )
+		public void PackData( Stream outStream )
 		{
 			BinaryWriter writer = new BinaryWriter( outStream );
 			writer.Write( _signature1 );
