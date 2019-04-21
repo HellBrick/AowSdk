@@ -47,14 +47,19 @@ namespace Aow2.Maps.Internal
 		{
 			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				int headerLength = ReadPreHeader( inputStream ).headerLength;
+				return ReadHeaderFromStream( inputStream );
+			}
+		}
 
-				using ( MemoryStream headerStream = new MemoryStream() )
-				{
-					inputStream.CopyBytesTo( headerStream, headerLength );
-					headerStream.Position = 0;
-					return _headerSerializer.Deserialize( headerStream ) as MapHeader;
-				}
+		public static MapHeader ReadHeaderFromStream( Stream inputStream )
+		{
+			int headerLength = ReadPreHeader( inputStream ).headerLength;
+
+			using ( MemoryStream headerStream = new MemoryStream() )
+			{
+				inputStream.CopyBytesTo( headerStream, headerLength );
+				headerStream.Position = 0;
+				return _headerSerializer.Deserialize( headerStream ) as MapHeader;
 			}
 		}
 
