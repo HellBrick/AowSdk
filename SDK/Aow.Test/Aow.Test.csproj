@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net451</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -11,10 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Aow.Core\Aow.Core.csproj" />
     <ProjectReference Include="..\Aow.Serialization\Aow.Serialization.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Maps\Resources\MapFiles.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MapFiles.resx</DependentUpon>
+    </Compile>
     <Compile Update="Serialization\Resources\Files.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -23,6 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Maps\Resources\MapFiles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapFiles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Serialization\Resources\Files.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Files.Designer.cs</LastGenOutput>
