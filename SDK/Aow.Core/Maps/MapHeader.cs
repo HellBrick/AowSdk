@@ -1,4 +1,5 @@
-﻿using Aow2.Maps.Internal;
+﻿using System.IO;
+using Aow2.Maps.Internal;
 
 namespace Aow2.Maps
 {
@@ -14,7 +15,13 @@ namespace Aow2.Maps
 		{
 		}
 
-		public static MapHeader FromFile( string filename ) => MapFormatHelper.ReadHeaderFromFile( filename );
+		public static MapHeader FromFile( string filename )
+		{
+			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
+			{
+				return MapFormatHelper.ReadHeaderFromStream( inputStream );
+			}
+		}
 
 		[Field( 0x1e )] public byte PlayersCount { get; set; }
 		[Field( 0x21 )] public int Day { get; set; }

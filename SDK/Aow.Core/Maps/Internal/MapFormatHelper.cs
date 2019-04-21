@@ -43,14 +43,6 @@ namespace Aow2.Maps.Internal
 			}
 		}
 
-		public static MapHeader ReadHeaderFromFile( string filename )
-		{
-			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
-			{
-				return ReadHeaderFromStream( inputStream );
-			}
-		}
-
 		public static MapHeader ReadHeaderFromStream( Stream inputStream )
 		{
 			int headerLength = ReadPreHeader( inputStream ).headerLength;
