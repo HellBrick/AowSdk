@@ -52,7 +52,6 @@ namespace Aow2.Maps.Internal
 			{
 				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
 
-				//	Header stream
 				using ( MemoryStream headerStream = new MemoryStream() )
 				{
 					inputStream.CopyBytesTo( headerStream, headerLength );
