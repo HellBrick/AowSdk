@@ -20,15 +20,13 @@ namespace Aow2.Maps.Internal
 		{
 			using ( FileStream inputStream = new FileStream( filename, FileMode.Open, FileAccess.Read ) )
 			{
-				BinaryReader reader = new BinaryReader( inputStream );
-
 				(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
 
 				//	Header stream
 				inputStream.Position += headerLength;
 
 				//	CFS signature
-				ValidateSignature( reader, _signatureCFS );
+				ValidateSignature( new BinaryReader( inputStream ), _signatureCFS );
 
 				//	Data stream
 				MemoryStream dataStream = new MemoryStream();
