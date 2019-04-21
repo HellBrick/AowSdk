@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Aow2.Serialization;
 
 namespace Aow2.Collections
@@ -17,7 +18,7 @@ namespace Aow2.Collections
 				throw new InvalidCastException( String.Format( "Type {0} can't be converted to Byte", typeof( T ) ) );
 		}
 
-		private T ToEnum( byte item ) => default( T );
+		private T ToEnum( byte item ) => Unsafe.As<byte, T>( ref item );
 
 		private byte ToByte( T item ) => Convert.ToByte( item );
 
