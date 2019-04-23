@@ -4,6 +4,7 @@ using Aow.Test.Serialization.Resources;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
 using Aow2.Test.Serialization.Mocks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Aow2.Test.Serialization
@@ -96,6 +97,22 @@ namespace Aow2.Test.Serialization
 				_formatter.Serialize( stream, _polymorphList );
 				byte[] serialized = stream.ToArray();
 				CollectionAssert.AreEqual( Files.PolymorphListItem, serialized );
+			}
+		}
+
+		[TestMethod]
+		public void ListWithLeadingNullsRoundTrips()
+		{
+			ListMock original = new ListMock( null, null, null, new ListItemMock() { AA = 0x42 } );
+
+			using ( MemoryStream stream = new MemoryStream() )
+			{
+				_formatter.Serialize( stream, original );
+
+				stream.Position = 0;
+				ListMock roundTripped = _formatter.Deserialize( stream, 0, stream.Length );
+
+				roundTripped.Should().BeEquivalentTo( original );
 			}
 		}
 	}

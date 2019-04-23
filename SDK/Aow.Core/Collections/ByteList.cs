@@ -34,8 +34,32 @@ namespace Aow2.Collections
 			output.Write( DefaultValue );
 			output.Write( Count );
 
-			foreach ( byte value in this )
-				output.Write( value );
+			byte repeatCount = 0;
+
+			for ( int i = 0; i < Count; i++ )
+			{
+				byte value = this[ i ];
+
+				if ( value == DefaultValue )
+					repeatCount++;
+				else
+				{
+					WriteDefaultValueSequenceIfNeeded();
+					output.Write( value );
+				}
+			}
+
+			WriteDefaultValueSequenceIfNeeded();
+
+			void WriteDefaultValueSequenceIfNeeded()
+			{
+				if ( repeatCount > 0 )
+				{
+					output.Write( DefaultValue );
+					output.Write( repeatCount );
+					repeatCount = 0;
+				}
+			}
 		}
 
 		void ICustomFormatted.Deserialize( Stream inStream, long length )
