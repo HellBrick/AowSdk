@@ -13,7 +13,7 @@ namespace Aow2.Maps
 	{
 		public Player()
 		{
-			Race = Race.None;
+			Race = Race.Humans;
 			Password = "";
 			DiplomaticRelations = new PlayerDiplomaticRelations();
 			Statistics = new PlayerStatistics();
