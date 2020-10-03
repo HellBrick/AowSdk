@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="ModEditor.Views.Races.RaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:conv="clr-namespace:Utils.WPF.Converters;assembly=Utils.WPF"
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+			 xmlns:ctrlLocal="clr-namespace:ModEditor.Views.Controls"
+			 xmlns:aow="clr-namespace:Aow2;assembly=Aow2.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+			 Name="_control">
+
+	<UserControl.Resources>
+		<Style x:Key="NoAbilityStub" TargetType="{x:Type TextBlock}">
+			<Setter Property="TextWrapping" Value="NoWrap"/>
+			<Setter Property="TextTrimming" Value="None"/>
+			<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+			<Setter Property="Padding" Value="0,14,0,14"></Setter>
+		</Style>
+		
+		<Style x:Key="BonusParamTextBox" BasedOn="{StaticResource ResourceKey=ParamTextBox}" TargetType="{x:Type TextBox}">
+			<Style.Triggers>
+				<Trigger Property="Text" Value="0">
+					<Setter Property="Foreground" Value="Gray"></Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid>
+		<TextBlock Name="_noAbilityStub" Text="Select race to edit its properties."
+				   Style="{DynamicResource NoAbilityStub}"
+				   Visibility="{Binding Race, ElementName=_control, Converter={conv:NullToVisibility IfNull=Visible, IfNotNull=Hidden}}">
+		</TextBlock>
+
+		<Grid DataContext="{Binding Race, ElementName=_control}" Width="400"
+			  Visibility="{Binding Race, ElementName=_control, Converter={conv:NullToVisibility IfNull=Hidden}}"
+			  Grid.IsSharedSizeScope="True">
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<!--	Terrains	-->
+			<ctrl:TextSeparator Grid.Row="0" Text="Terrains and morals"></ctrl:TextSeparator>
+			<Grid Grid.Row="1" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Alignment" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ctrlLocal:EnumPicker Grid.Row="0" Grid.Column="1" Type="{x:Type aow:Alignment}" Value="{Binding Alignment}"></ctrlLocal:EnumPicker>
+				
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Friendly" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ctrlLocal:EnumDropdown Grid.Row="1" Grid.Column="1" Type="{x:Type aow:TerrainTypes}" Value="{Binding FriendlyTerrains}" Text="{Binding FriendlyTerrains}"></ctrlLocal:EnumDropdown>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Hostile" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ctrlLocal:EnumDropdown Grid.Row="2" Grid.Column="1" Type="{x:Type aow:TerrainTypes}" Value="{Binding HostileTerrains}" Text="{Binding HostileTerrains}"></ctrlLocal:EnumDropdown>
+
+				<TextBlock Grid.Row="3" Grid.Column="0" Text="Crop terrains" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ctrlLocal:EnumDropdown Grid.Row="3" Grid.Column="1" Type="{x:Type aow:TerrainTypes}" Value="{Binding CropTerrains}" Text="{Binding CropTerrains}"></ctrlLocal:EnumDropdown>
+			</Grid>
+
+			<!--	Bonuses	-->
+			<ctrl:TextSeparator Grid.Row="2" Text="Bonuses"></ctrl:TextSeparator>
+			<Grid Grid.Row="3" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+				
+				<!--	Vertical headers	-->
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Production" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Gold" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="3" Grid.Column="0" Text="Mana" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="4" Grid.Column="0" Text="Research" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="5" Grid.Column="0" Text="Growth" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				
+				<!--	Horizontal headers	-->
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="Outpost" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="2" Text="Village" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="3" Text="Town" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBlock Grid.Row="0" Grid.Column="4" Text="City" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				
+				<!--	Production	-->
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding RaceSettings.ProductionBonusOutpost}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding RaceSettings.ProductionBonusVillage}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="1" Grid.Column="3" Text="{Binding RaceSettings.ProductionBonusTown}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="1" Grid.Column="4" Text="{Binding RaceSettings.ProductionBonusCity}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+
+				<!--	Gold	-->
+				<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding RaceSettings.GoldBonusOutpost}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding RaceSettings.GoldBonusVillage}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="2" Grid.Column="3" Text="{Binding RaceSettings.GoldBonusTown}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="2" Grid.Column="4" Text="{Binding RaceSettings.GoldBonusCity}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+
+				<!--	Mana	-->
+				<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding RaceSettings.ManaBonusOutpost}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="3" Grid.Column="2" Text="{Binding RaceSettings.ManaBonusVillage}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="3" Grid.Column="3" Text="{Binding RaceSettings.ManaBonusTown}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="3" Grid.Column="4" Text="{Binding RaceSettings.ManaBonusCity}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+
+				<!--	Research	-->
+				<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding RaceSettings.ResearchBonusOutpost}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding RaceSettings.ResearchBonusVillage}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="4" Grid.Column="3" Text="{Binding RaceSettings.ResearchBonusTown}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="4" Grid.Column="4" Text="{Binding RaceSettings.ResearchBonusCity}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+
+				<!--	Growth	-->
+				<TextBox Grid.Row="5" Grid.Column="1" Text="{Binding RaceSettings.GrowthBonusOutpost}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="5" Grid.Column="2" Text="{Binding RaceSettings.GrowthBonusVillage}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="5" Grid.Column="3" Text="{Binding RaceSettings.GrowthBonusTown}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+				<TextBox Grid.Row="5" Grid.Column="4" Text="{Binding RaceSettings.GrowthBonusCity}" Style="{DynamicResource BonusParamTextBox}"></TextBox>
+			</Grid>
+		</Grid>
+	</Grid>
+</UserControl>

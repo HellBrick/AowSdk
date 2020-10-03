@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B551DDC5-BE95-46A6-A81D-9C97F0ABA882}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModEditor</RootNamespace>
+    <AssemblyName>ModEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>Editor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism" Version="4.1.0" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="1.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="EqualConverter.cs" />
+    <Compile Include="Internal\Activity.cs" />
+    <Compile Include="Internal\AppendCollection.cs" />
+    <Compile Include="Internal\ChainComparer.cs" />
+    <Compile Include="Internal\DelegateComparer.cs" />
+    <Compile Include="Internal\DelegateGroupDescription.cs" />
+    <Compile Include="Internal\EventHandler.cs" />
+    <Compile Include="Internal\Graphics\IImageProvider.cs" />
+    <Compile Include="Internal\Graphics\ImageProvider.cs" />
+    <Compile Include="Internal\NameDelegateCommand.cs" />
+    <Compile Include="Internal\ObservableDictionary.cs" />
+    <Compile Include="Internal\Singleton.cs" />
+    <Compile Include="Internal\SpinLockHelper.cs" />
+    <Compile Include="ModListWindow.xaml.cs">
+      <DependentUpon>ModListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModWindow.xaml.cs">
+      <DependentUpon>ModWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Style\SectionedEditor.xaml.cs" />
+    <Compile Include="ViewModels\Global.cs" />
+    <Compile Include="ViewModels\ICloseable.cs" />
+    <Compile Include="ViewModels\ModList\ModInfoVM.cs" />
+    <Compile Include="ViewModels\ModList\ModListScreenVM.cs" />
+    <Compile Include="ViewModels\Mod\Abilities\AbilityFactory.cs" />
+    <Compile Include="ViewModels\Mod\Abilities\AbilityListVM.cs" />
+    <Compile Include="ViewModels\Mod\Abilities\AbilityViewModelFactory.cs" />
+    <Compile Include="ViewModels\Mod\Abilities\AbilityVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\AbilitiesTabVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\AbilityMaskCheckVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\AbilityResourceVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\AreaRangedAbilityVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\CombatAbilityResourceVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\DurationAbilityResourceVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\EnchantmentAbilityResourceVM.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\Internal\AbilityViewModelFactory.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\Internal\IAbilityListProvider.cs" />
+    <Compile Include="ViewModels\Mod\AbilityResources\RangedAbilityResourceVM.cs" />
+    <Compile Include="ViewModels\Mod\Game\GameSettingsTabVM.cs" />
+    <Compile Include="ViewModels\Mod\IModTab.cs" />
+    <Compile Include="ViewModels\Mod\ModVM.cs" />
+    <Compile Include="ViewModels\Mod\Races\RaceTabVM.cs" />
+    <Compile Include="ViewModels\Mod\Races\RaceVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\BonusSkillVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\CitySkillVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\Dependencies\ExclusionGrid.cs" />
+    <Compile Include="ViewModels\Mod\Skills\Dependencies\IExclusionCheck.cs" />
+    <Compile Include="ViewModels\Mod\Skills\Dependencies\ISkillListPrivider.cs" />
+    <Compile Include="ViewModels\Mod\Skills\MultiplierSkillVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\SkillCkeckVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\Internal\SkillComparer.cs" />
+    <Compile Include="ViewModels\Mod\Skills\SkillsTabVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\Internal\SkillViewModelFactory.cs" />
+    <Compile Include="ViewModels\Mod\Skills\SkillVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\SpellbookSkillVM.cs" />
+    <Compile Include="ViewModels\Mod\Skills\SpellCastingSkillVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\AddObjectsSpellVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\AreaCombatSpellVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\CityDamageSpellVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\CombatSpellVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\Dependencies\ISpellListProvider.cs" />
+    <Compile Include="ViewModels\Mod\Spells\Internal\SpellViewModelFactory.cs" />
+    <Compile Include="ViewModels\Mod\Spells\PestilenceSpellVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\SpellCheckVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\SpellComparer.cs" />
+    <Compile Include="ViewModels\Mod\Spells\SpellsTabVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\SpellVM.cs" />
+    <Compile Include="ViewModels\Mod\Spells\StormSpellVM.cs" />
+    <Compile Include="ViewModels\Mod\TabStub.cs" />
+    <Compile Include="ViewModels\Mod\Units\IUnitPreviewProvider.cs" />
+    <Compile Include="ViewModels\Mod\Units\UnitModelsTabVM.cs" />
+    <Compile Include="ViewModels\Mod\Units\UnitModelVM.cs" />
+    <Compile Include="ViewModels\Mod\Units\UnitsTabVM.cs" />
+    <Compile Include="ViewModels\Mod\Units\UnitVM.cs" />
+    <Compile Include="ViewModels\Navigation\IMode.cs" />
+    <Compile Include="ViewModels\Navigation\NavigationVM.cs" />
+    <Compile Include="Views\Abilities\AbilityListView.xaml.cs">
+      <DependentUpon>AbilityListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Abilities\AbilityView.xaml.cs">
+      <DependentUpon>AbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\AbilityListView.xaml.cs">
+      <DependentUpon>AbilityListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\AbilityView.xaml.cs">
+      <DependentUpon>AbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\AbilityPreview.xaml.cs">
+      <DependentUpon>AbilityPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\AbilityViewMain.xaml.cs">
+      <DependentUpon>AbilityViewMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\AbilityMaskListView.xaml.cs">
+      <DependentUpon>AbilityMaskListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\DurationAbilityView.xaml.cs">
+      <DependentUpon>DurationAbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\CombatAbilityView.xaml.cs">
+      <DependentUpon>CombatAbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\RangedAbilityView.xaml.cs">
+      <DependentUpon>RangedAbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\AreaRangedAbilityView.xaml.cs">
+      <DependentUpon>AreaRangedAbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AbilityPicker.xaml.cs">
+      <DependentUpon>AbilityPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\EnumPicker.xaml.cs">
+      <DependentUpon>EnumPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbilityResources\EnchantmentAbilityView.xaml.cs">
+      <DependentUpon>EnchantmentAbilityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Game\GameSettingsTabView.xaml.cs">
+      <DependentUpon>GameSettingsTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Races\RacePreview.xaml.cs">
+      <DependentUpon>RacePreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Races\RaceTabView.xaml.cs">
+      <DependentUpon>RaceTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Races\RaceView.xaml.cs">
+      <DependentUpon>RaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\AreaCombatSpellView.xaml.cs">
+      <DependentUpon>AreaCombatSpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\EnumDropdown.xaml.cs">
+      <DependentUpon>EnumDropdown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\CombatSpellView.xaml.cs">
+      <DependentUpon>CombatSpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PestilenceSpellView.xaml.cs">
+      <DependentUpon>PestilenceSpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\CityDamageSpellView.xaml.cs">
+      <DependentUpon>CityDamageSpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\AddObjectsSpellView.xaml.cs">
+      <DependentUpon>AddObjectsSpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\MultiplierSkillViewPart.xaml.cs">
+      <DependentUpon>MultiplierSkillViewPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\CitySkillViewPart.xaml.cs">
+      <DependentUpon>CitySkillViewPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\BonusSkillViewPart.xaml.cs">
+      <DependentUpon>BonusSkillViewPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModInfoView.xaml.cs">
+      <DependentUpon>ModInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModListView.xaml.cs">
+      <DependentUpon>ModListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModView.xaml.cs">
+      <DependentUpon>ModView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SkillCheckView.xaml.cs">
+      <DependentUpon>SkillCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SkillListView.xaml.cs">
+      <DependentUpon>SkillListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SkillPreview.xaml.cs">
+      <DependentUpon>SkillPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SkillView.xaml.cs">
+      <DependentUpon>SkillView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SkillViewDependencies.xaml.cs">
+      <DependentUpon>SkillViewDependencies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SkillViewMain.xaml.cs">
+      <DependentUpon>SkillViewMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SpellbookSkillViewPart.xaml.cs">
+      <DependentUpon>SpellbookSkillViewPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Skills\SpellCastingSkillViewPart.xaml.cs">
+      <DependentUpon>SpellCastingSkillViewPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\SpellCheckView.xaml.cs">
+      <DependentUpon>SpellCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\SpellPreview.xaml.cs">
+      <DependentUpon>SpellPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\SpellListView.xaml.cs">
+      <DependentUpon>SpellListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\SpellView.xaml.cs">
+      <DependentUpon>SpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\SpellViewMain.xaml.cs">
+      <DependentUpon>SpellViewMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\SpellViewDependencies.xaml.cs">
+      <DependentUpon>SpellViewDependencies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Spells\StormSpellView.xaml.cs">
+      <DependentUpon>StormSpellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Units\UnitModelPreview.xaml.cs">
+      <DependentUpon>UnitModelPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Units\UnitModelView.xaml.cs">
+      <DependentUpon>UnitModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Units\UnitModelListView.xaml.cs">
+      <DependentUpon>UnitModelListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Units\UnitListView.xaml.cs">
+      <DependentUpon>UnitListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Units\UnitPreview.xaml.cs">
+      <DependentUpon>UnitPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Units\UnitView.xaml.cs">
+      <DependentUpon>UnitView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Icons\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ModListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Buttons\ActivateButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Buttons\EditButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Buttons\RemoveButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\FastTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\IconButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\SectionedEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\InlineButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\StackedControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\NoCircleExpander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Abilities\AbilityListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Abilities\AbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\AbilityListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\AbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\AbilityPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\AbilityViewMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\AbilityMaskListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\DurationAbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\CombatAbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\RangedAbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\AreaRangedAbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AbilityPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\EnumPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AbilityResources\EnchantmentAbilityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\GameSettingsTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Races\RacePreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Races\RaceTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Races\RaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\AreaCombatSpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\EnumDropdown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\CombatSpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PestilenceSpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\CityDamageSpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\AddObjectsSpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\MultiplierSkillViewPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\CitySkillViewPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\BonusSkillViewPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SkillCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SkillListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SkillPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SkillView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SkillViewDependencies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SkillViewMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SpellbookSkillViewPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Skills\SpellCastingSkillViewPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\SpellCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\SpellPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\SpellListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\SpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\SpellViewMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\SpellViewDependencies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Spells\StormSpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Units\UnitModelPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Units\UnitModelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Units\UnitModelListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Units\UnitListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Units\UnitPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Units\UnitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VVmMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SDK\Aow.Core\Aow.Core.csproj">
+      <Project>{e98a7e67-1106-4247-9b4c-c770270637a4}</Project>
+      <Name>Aow.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\Aow.Graphics\Aow.Graphics.csproj">
+      <Project>{47e8dfc5-382c-4fb9-8f33-eab7243a41ce}</Project>
+      <Name>Aow.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\Aow.Serialization\Aow.Serialization.csproj">
+      <Project>{81f71eca-f618-4d69-8b12-6bf054d9c370}</Project>
+      <Name>Aow.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Utils.WPF.Controls\Utils.WPF.Controls.csproj">
+      <Project>{76c80399-82e8-4d20-a8dd-495ac15fe43c}</Project>
+      <Name>Utils.WPF.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Utils.WPF\Utils.WPF.csproj">
+      <Project>{9f0fd5e8-aaf6-48a0-bf00-31a4fb53bff8}</Project>
+      <Name>Utils.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Editor.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

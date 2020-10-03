@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="ModEditor.Views.AbilityResources.AbilityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:conv="clr-namespace:Utils.WPF.Converters;assembly=Utils.WPF"
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+			 xmlns:view="clr-namespace:ModEditor.Views"
+			 xmlns:vmAbilities="clr-namespace:ModEditor.ViewModels.Mod.AbilityResources"
+			 xmlns:viewAbilityResources="clr-namespace:ModEditor.Views.AbilityResources"
+             mc:Ignorable="d" 
+             d:DesignHeight="301" d:DesignWidth="415"
+			 Name="_control">
+
+	<UserControl.Resources>
+		<Style x:Key="NoAbilityStub" TargetType="{x:Type TextBlock}">
+			<Setter Property="TextWrapping" Value="NoWrap"/>
+			<Setter Property="TextTrimming" Value="None"/>
+			<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+			<Setter Property="Padding" Value="0,14,0,14"></Setter>
+		</Style>
+
+		<!--	Templates for additional info	-->
+		<DataTemplate DataType="{x:Type vmAbilities:AbilityResourceVM}"></DataTemplate>
+
+		<DataTemplate DataType="{x:Type vmAbilities:DurationAbilityResourceVM}">
+			<viewAbilityResources:DurationAbilityView></viewAbilityResources:DurationAbilityView>
+		</DataTemplate>
+
+		<DataTemplate DataType="{x:Type vmAbilities:CombatAbilityResourceVM}">
+			<viewAbilityResources:CombatAbilityView></viewAbilityResources:CombatAbilityView>
+		</DataTemplate>
+
+		<DataTemplate DataType="{x:Type vmAbilities:RangedAbilityResourceVM}">
+			<viewAbilityResources:RangedAbilityView></viewAbilityResources:RangedAbilityView>
+		</DataTemplate>
+
+		<DataTemplate DataType="{x:Type vmAbilities:AreaRangedAbilityVM}">
+			<viewAbilityResources:AreaRangedAbilityView></viewAbilityResources:AreaRangedAbilityView>
+		</DataTemplate>
+
+		<DataTemplate DataType="{x:Type vmAbilities:EnchantmentAbilityResourceVM}">
+			<viewAbilityResources:EnchantmentAbilityView></viewAbilityResources:EnchantmentAbilityView>
+		</DataTemplate>
+	</UserControl.Resources>
+
+	<Grid>
+		<TextBlock Name="_noAbilityStub" Text="Select ability to edit its properties."
+				   Style="{DynamicResource NoAbilityStub}"
+				   Visibility="{Binding Ability, ElementName=_control, Converter={conv:NullToVisibility IfNull=Visible, IfNotNull=Hidden}}">
+		</TextBlock>
+
+		<Grid DataContext="{Binding Ability, ElementName=_control}" Width="400"
+			  Visibility="{Binding Ability, ElementName=_control, Converter={conv:NullToVisibility IfNull=Hidden}}"
+			  Grid.IsSharedSizeScope="True">
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<viewAbilityResources:AbilityViewMain Grid.Row="0"></viewAbilityResources:AbilityViewMain>
+			<ContentPresenter Content="{Binding .}" Grid.Row="1"></ContentPresenter>
+			<viewAbilityResources:AbilityMaskListView Grid.Row="2"></viewAbilityResources:AbilityMaskListView>
+		</Grid>
+	</Grid>
+</UserControl>

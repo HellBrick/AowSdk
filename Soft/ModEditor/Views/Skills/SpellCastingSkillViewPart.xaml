@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ModEditor.Views.SpellCastingSkillViewPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="161" d:DesignWidth="489">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<ctrl:TextSeparator Text="Skill-specific"></ctrl:TextSeparator>
+		<Grid Grid.Row="1" Style="{StaticResource SectionPanel}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" SharedSizeGroup="_skillParamLabel"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+
+			<TextBlock Grid.Row="0" Grid.Column="0" Text="Lv2 research points" Style="{DynamicResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Level2Research}" Style="{DynamicResource ParamTextBox}"></TextBox>
+
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="Lv3 research points" Style="{DynamicResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Level3Research}" Style="{DynamicResource ParamTextBox}"></TextBox>
+
+			<TextBlock Grid.Row="2" Grid.Column="0" Text="Lv4 research points" Style="{DynamicResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Level4Research}" Style="{DynamicResource ParamTextBox}"></TextBox>
+
+			<TextBlock Grid.Row="3" Grid.Column="0" Text="Lv5 research points" Style="{DynamicResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Level5Research}" Style="{DynamicResource ParamTextBox}"></TextBox>
+		</Grid>
+	</Grid>
+</UserControl>

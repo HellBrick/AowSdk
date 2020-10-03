@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils.WPF", "Utils\Utils.WP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.WPF.Controls", "Utils\Utils.WPF.Controls\Utils.WPF.Controls.csproj", "{76C80399-82E8-4D20-A8DD-495AC15FE43C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Soft", "Soft", "{C929D4BB-D497-444D-A24C-BE4D20E522AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModEditor", "Soft\ModEditor\ModEditor.csproj", "{B551DDC5-BE95-46A6-A81D-9C97F0ABA882}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{76C80399-82E8-4D20-A8DD-495AC15FE43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76C80399-82E8-4D20-A8DD-495AC15FE43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76C80399-82E8-4D20-A8DD-495AC15FE43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B551DDC5-BE95-46A6-A81D-9C97F0ABA882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B551DDC5-BE95-46A6-A81D-9C97F0ABA882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B551DDC5-BE95-46A6-A81D-9C97F0ABA882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B551DDC5-BE95-46A6-A81D-9C97F0ABA882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +75,7 @@ Global
 		{76D8708D-8D6F-471D-8E72-1EB31CE853F2} = {0CE19C3C-58C6-4725-803B-B805BA1C8B17}
 		{42C89177-EBFF-4AFE-A17E-904D432D41D5} = {76EA848F-FD7D-455C-9ED1-5B28E62AC39C}
 		{76C80399-82E8-4D20-A8DD-495AC15FE43C} = {76EA848F-FD7D-455C-9ED1-5B28E62AC39C}
+		{B551DDC5-BE95-46A6-A81D-9C97F0ABA882} = {C929D4BB-D497-444D-A24C-BE4D20E522AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB86CD07-29BB-4999-99C3-9D7D4BC63FAF}

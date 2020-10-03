@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:ModEditor.ViewModels"
+					xmlns:vmUnits="clr-namespace:ModEditor.ViewModels.Mod.Units"
+					xmlns:vmSkills="clr-namespace:ModEditor.ViewModels.Mod.Skills"
+					xmlns:vmSpells="clr-namespace:ModEditor.ViewModels.Mod.Spells"
+					xmlns:vmAbilities="clr-namespace:ModEditor.ViewModels.Mod.AbilityResources"
+                    xmlns:vw="clr-namespace:ModEditor.Views"
+					xmlns:vwAbilityResources="clr-namespace:ModEditor.Views.AbilityResources"
+					xmlns:modelAbilities="clr-namespace:ModEditor.ViewModels.Mod.Abilities"
+					xmlns:viewAbilities="clr-namespace:ModEditor.Views.Abilities"
+					xmlns:vmGame="clr-namespace:ModEditor.ViewModels.Mod.Game"
+					xmlns:vwGame="clr-namespace:ModEditor.Views.Game"
+					xmlns:vmRaces="clr-namespace:ModEditor.ViewModels.Mod.Races"
+					xmlns:vwRaces="clr-namespace:ModEditor.Views.Races">
+    
+    <DataTemplate DataType="{x:Type vm:ModListScreenVM}">
+        <vw:ModListView></vw:ModListView>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:ModInfoVM}">
+        <vw:ModInfoView></vw:ModInfoView>
+    </DataTemplate>
+    
+	<DataTemplate DataType="{x:Type vm:ModVM}">
+		<vw:ModView></vw:ModView>
+	</DataTemplate>
+	
+	<DataTemplate DataType="{x:Type vmUnits:UnitsTabVM}">
+		<vw:UnitListView></vw:UnitListView>
+	</DataTemplate>
+	
+	<DataTemplate DataType="{x:Type vmSkills:SkillsTabVM}">
+		<vw:SkillListView></vw:SkillListView>
+	</DataTemplate>
+	
+	<DataTemplate DataType="{x:Type vmSkills:SkillCkeckVM}">
+		<vw:SkillCheckView></vw:SkillCheckView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type vmSpells:SpellsTabVM}">
+		<vw:SpellListView></vw:SpellListView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type vmAbilities:AbilitiesTabVM}">
+		<vwAbilityResources:AbilityListView></vwAbilityResources:AbilityListView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type vmSpells:SpellCheckVM}">
+		<vw:SpellCheckView></vw:SpellCheckView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type vmAbilities:AbilityMaskCheckVM}">
+		<vw:SpellCheckView></vw:SpellCheckView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type vmUnits:UnitModelsTabVM}">
+		<vw:UnitModelListView></vw:UnitModelListView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type modelAbilities:AbilityListVM}">
+		<viewAbilities:AbilityListView></viewAbilities:AbilityListView>
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type modelAbilities:AbilityVM}">
+		<viewAbilities:AbilityView></viewAbilities:AbilityView>
+	</DataTemplate>
+	
+	<DataTemplate DataType="{x:Type vmGame:GameSettingsTabVM}">
+		<vwGame:GameSettingsTabView></vwGame:GameSettingsTabView>
+	</DataTemplate>
+	
+	<DataTemplate DataType="{x:Type vmRaces:RaceTabVM}">
+		<vwRaces:RaceTabView></vwRaces:RaceTabView>
+	</DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="ModEditor.Views.SpellListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:view="clr-namespace:ModEditor.Views"
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+	<UserControl.Resources>
+		<Style x:Key="VerticalSeparatorStyle" TargetType="{x:Type Separator}">
+			<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+			<Setter Property="Margin" Value="2,0,2,0"/>
+			<Setter Property="Focusable" Value="false"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Separator}">
+						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Width="1" SnapsToDevicePixels="true"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="Auto"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<ListBox Grid.Column="0" ItemsSource="{Binding Items}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+			
+			<ListBox.GroupStyle>
+				<GroupStyle>
+					<GroupStyle.Panel>
+						<ItemsPanelTemplate>
+							<StackPanel></StackPanel>
+						</ItemsPanelTemplate>
+					</GroupStyle.Panel>
+					
+					<GroupStyle.HeaderTemplate>
+						<DataTemplate>
+							<ctrl:TextSeparator Text="{Binding Name}" FontSize="20"></ctrl:TextSeparator>
+						</DataTemplate>
+					</GroupStyle.HeaderTemplate>
+				</GroupStyle>
+			</ListBox.GroupStyle>
+			
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel></WrapPanel>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<view:SpellPreview Padding="3"></view:SpellPreview>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<view:SpellView Grid.Column="1" Spell="{Binding SelectedSpell}"  Margin="7,0,0,0"></view:SpellView>
+	</Grid>
+</UserControl>

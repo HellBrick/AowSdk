@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="ModEditor.Views.UnitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:conv="clr-namespace:Utils.WPF.Converters;assembly=Utils.WPF"
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+			 xmlns:utils="clr-namespace:Utils.WPF;assembly=Utils.WPF"
+			 xmlns:aow="clr-namespace:Aow2;assembly=Aow2.Core"
+			 xmlns:AowUnits="clr-namespace:Aow2.Units;assembly=Aow2.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="501" d:DesignWidth="512"
+			 Name="_control">
+	
+	<UserControl.Resources>
+		<Style x:Key="SectionPanel" TargetType="{x:Type Panel}">
+			<Setter Property="Margin" Value="7,5,7,5"></Setter>
+		</Style>
+		
+		<Style x:Key="NoUnitStub" TargetType="{x:Type TextBlock}">
+			<Setter Property="TextWrapping" Value="NoWrap"/>
+			<Setter Property="TextTrimming" Value="None"/>
+			<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+			<Setter Property="Padding" Value="0,14,0,14"></Setter>
+		</Style>
+		
+		<Style x:Key="UnitParamTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource StackedTextBox}">
+			<Setter Property="Width" Value="30"></Setter>
+			<Setter Property="HorizontalAlignment" Value="Left"></Setter>
+		</Style>
+		
+		<Style x:Key="MultiLineTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource StackedTextBox}">
+			<Setter Property="TextWrapping" Value="Wrap"></Setter>
+			<Setter Property="AcceptsReturn" Value="True"></Setter>
+			<Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
+			<Setter Property="MaxLines" Value="5"></Setter>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid>
+		<TextBlock Name="_noUnitStub" Text="Select unit to edit its properties."
+				   Style="{DynamicResource NoUnitStub}"
+				   Visibility="{Binding Unit, ElementName=_control, Converter={conv:NullToVisibility IfNull=Visible, IfNotNull=Hidden}}">
+		</TextBlock>
+		
+		<Grid DataContext="{Binding Unit, ElementName=_control}" Width="400"
+			  Visibility="{Binding Unit, ElementName=_control, Converter={conv:NullToVisibility IfNull=Hidden}}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+			
+			<!--	Info	-->
+			<ctrl:TextSeparator Grid.Row="0" Text="Info"></ctrl:TextSeparator>
+			<Grid Grid.Row="1" Style="{StaticResource SectionPanel}">
+				<Grid.RowDefinitions>
+					<RowDefinition></RowDefinition>
+					<RowDefinition></RowDefinition>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Name" Style="{DynamicResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Style="{DynamicResource StackedTextBox}"></TextBox>
+				
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Description" Style="{DynamicResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Style="{DynamicResource MultiLineTextBox}"></TextBox>
+			</Grid>
+			
+			<!--	Parameters	-->
+			<ctrl:TextSeparator Grid.Row="2" Text="Parameters"></ctrl:TextSeparator>
+			<Grid Grid.Row="3" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+				
+				<!--	Left column	-->
+				<TextBlock Grid.Column="0" Grid.Row="0" Text="Attack" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Attack}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="0" Grid.Row="1" Text="Damage" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Damage}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="0" Grid.Row="2" Text="Defense" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Defense}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="0" Grid.Row="3" Text="Resistance" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Resistance}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="0" Grid.Row="4" Text="HP" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="1" Grid.Row="4" Text="{Binding HP}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="0" Grid.Row="5" Text="MP" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="1" Grid.Row="5" Text="{Binding MP}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<!--	Right column -->
+				
+				<TextBlock Grid.Column="2" Grid.Row="0" Text="Level" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="3" Grid.Row="0" Text="{Binding Level}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="2" Grid.Row="1" Text="Price" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Price}" Style="{StaticResource UnitParamTextBox}"></TextBox>
+				
+				<TextBlock Grid.Column="2" Grid.Row="2" Text="Race" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ComboBox Grid.Column="3" Grid.Row="2" ItemsSource="{utils:EnumTypeValues {x:Type aow:Race}}" SelectedItem="{Binding Race}" Style="{StaticResource StackedComboBox}"></ComboBox>
+				
+				<TextBlock Grid.Column="2" Grid.Row="3" Text="Alignment" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ComboBox Grid.Column="3" Grid.Row="3" ItemsSource="{utils:EnumTypeValues {x:Type aow:Alignment}}" SelectedItem="{Binding Alignment}" Style="{StaticResource StackedComboBox}"></ComboBox>
+				
+				<TextBlock Grid.Column="2" Grid.Row="4" Text="Type" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ComboBox Grid.Column="3" Grid.Row="4" ItemsSource="{utils:EnumTypeValues {x:Type AowUnits:UnitType}}" SelectedItem="{Binding Type}" Style="{StaticResource StackedComboBox}"></ComboBox>
+				
+				<TextBlock Grid.Column="2" Grid.Row="5" Text="Gender" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ComboBox Grid.Column="3" Grid.Row="5" ItemsSource="{utils:EnumTypeValues {x:Type AowUnits:UnitGender}}" SelectedItem="{Binding Gender}" Style="{StaticResource StackedComboBox}"></ComboBox>
+				
+				<TextBlock Grid.Column="2" Grid.Row="6" Text="Size" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+				<ComboBox Grid.Column="3" Grid.Row="6" ItemsSource="{utils:EnumTypeValues {x:Type AowUnits:UnitSize}}" SelectedItem="{Binding Size}" Style="{StaticResource StackedComboBox}"></ComboBox>
+			</Grid>
+			
+			<!--	Misc	-->
+			<ctrl:TextSeparator Grid.Row="4" Text="Miscellaneous"></ctrl:TextSeparator>
+			<Grid Grid.Row="5" Style="{StaticResource SectionPanel}">
+				<Grid.RowDefinitions>
+					<RowDefinition></RowDefinition>
+				</Grid.RowDefinitions>
+				
+				<CheckBox Grid.Row="0" IsChecked="{Binding IsGarrisonDisabled, Converter={conv:Not}}" Content="Can be part of city garrison"></CheckBox>
+			</Grid>
+			
+			<!--	Abilities	-->
+			<ctrl:TextSeparator Grid.Row="6" Text="Abilities"></ctrl:TextSeparator>
+			<Grid Grid.Row="7" Style="{StaticResource SectionPanel}">
+				<TabControl>
+					<TabControl.Items>
+						<TabItem Header="Base">
+							<ContentPresenter Content="{Binding Abilities}"></ContentPresenter>
+						</TabItem>
+						<TabItem Header="Silver">
+							<ContentPresenter Content="{Binding SilverUpgrades}"></ContentPresenter>
+						</TabItem>
+						<TabItem Header="Gold">
+							<ContentPresenter Content="{Binding GoldUpgrades}"></ContentPresenter>
+						</TabItem>
+					</TabControl.Items>
+				</TabControl>
+			</Grid>
+		</Grid>
+    </Grid>
+</UserControl>

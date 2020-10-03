@@ -1,0 +1,241 @@
+﻿<UserControl x:Class="ModEditor.Views.Game.GameSettingsTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+			 xmlns:conv="clr-namespace:Utils.WPF.Converters;assembly=Utils.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	
+	<UserControl.Resources>
+		<Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StackedLabelBlock}"></Style>
+		<Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StackedTextBox}"></Style>
+
+		<Style x:Key="ModIDBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource ParamTextBox}">
+			<Setter Property="MinWidth" Value="65"></Setter>
+		</Style>
+
+		<Style x:Key="CommandLink" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource StackedLabelBlock}">
+		</Style>
+
+		<Style x:Key="NameBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource ParamTextBox}">
+			<Setter Property="MinWidth" Value="65"></Setter>
+		</Style>
+
+		<Style x:Key="OkButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ActivateButton12}">
+			<Setter Property="VerticalAlignment" Value="Center"></Setter>
+			<Style.Triggers>
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</UserControl.Resources>
+	
+	<ScrollViewer VerticalScrollBarVisibility="Auto" Padding="15,7,15,7">
+		<Grid Grid.IsSharedSizeScope="True">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+			
+			<!--	Mod	-->
+			<ctrl:TextSeparator Grid.Row="0" Text="Mod"></ctrl:TextSeparator>
+			
+			<Grid Grid.Row="1" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Mod ID"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource ModIDBox}"
+						 Text="{Binding ModIDText, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}">					
+				</TextBox>
+
+				<TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource CommandLink}">
+					<Hyperlink Command="{Binding GenerateIDCommand}">Generate new ID</Hyperlink>
+				</TextBlock>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Name"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewName, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NameBox}">
+					<TextBox.InputBindings>
+						<KeyBinding Gesture="Enter" Command="{Binding CopyCommand}"></KeyBinding>
+						<KeyBinding Gesture="Esc" Command="{Binding ResetNameCommand}"></KeyBinding>
+					</TextBox.InputBindings>
+				</TextBox>
+
+				<Button Grid.Row="1" Grid.Column="2" Style="{StaticResource OkButton}" Command="{Binding CopyCommand}"></Button>
+			</Grid>
+
+			<!--	Upkeep	-->
+			<ctrl:TextSeparator Grid.Row="2" Text="Upkeep"></ctrl:TextSeparator>
+
+			<Grid Grid.Row="3" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Level 0"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.UpkeepLevel0, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Gold per level"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.UpkeepGoldPerLevel, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+			</Grid>
+
+			<!--	Outposts	-->
+			<ctrl:TextSeparator Grid.Row="4" Text="Outposts"></ctrl:TextSeparator>
+
+			<Grid Grid.Row="5" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Outpost population"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.OutpostPopulation, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Required city population"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.PioneerCitySize, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Price increment"></TextBlock>
+				<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Model.FirstPioneerPricePenalty, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+			</Grid>
+
+			<!--	City garrisons	-->
+			<ctrl:TextSeparator Grid.Row="6" Text="City garrison prices"></ctrl:TextSeparator>
+
+			<Grid Grid.Row="7" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Outpost"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.OutpostGarrisonPrice, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Village"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.VillageGarrisonPrice, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Town"></TextBlock>
+				<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Model.TownGarrisonPrice, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="3" Grid.Column="0" Text="City"></TextBlock>
+				<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Model.CityGarrisonPrice, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="4" Grid.Column="0" Text="Strength modifier"></TextBlock>
+				<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Model.GarrisonStrengthMod, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+			</Grid>
+
+			<!--	Walls	-->
+			<ctrl:TextSeparator Grid.Row="8" Text="Walls"></ctrl:TextSeparator>
+
+			<Grid Grid.Row="9" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Wooden gate HP"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.WoodenGateHP, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Wooden wall HP"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.WoodenWallHP, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Stone gate HP"></TextBlock>
+				<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Model.StoneGateHP, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="3" Grid.Column="0" Text="Stone wall HP"></TextBlock>
+				<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Model.StoneWallHP, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+			</Grid>
+
+			<!--	Combat mechanics	-->
+			<ctrl:TextSeparator Grid.Row="10" Text="Combat mechanics"></ctrl:TextSeparator>
+
+			<Grid Grid.Row="11" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Min hit %"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.MinHitChance, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Max hit %"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.MaxHitChance, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Damage if missed"></TextBlock>
+				<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Model.MissDamage, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+			</Grid>
+
+			<!--	Miscellaneous	-->
+			<ctrl:TextSeparator Grid.Row="12" Text="Miscellaneous"></ctrl:TextSeparator>
+
+			<Grid Grid.Row="13" Style="{StaticResource SectionPanel}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="_ssgLabel"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Production transfer rate"></TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.ProductionTransferRate, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Research conversion rate"></TextBlock>
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.ResearchConversionRate, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ParamTextBox}"></TextBox>
+			</Grid>
+		</Grid>
+	</ScrollViewer>
+</UserControl>

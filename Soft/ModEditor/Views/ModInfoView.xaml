@@ -1,0 +1,85 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:conv="clr-namespace:Utils.WPF.Converters;assembly=Utils.WPF"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="ModEditor.Views.ModInfoView" 
+             mc:Ignorable="d" d:DesignWidth="264" d:DesignHeight="31">
+	
+	<UserControl.InputBindings>		
+		<MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditCommand}"></MouseBinding>
+	</UserControl.InputBindings>
+	
+	<UserControl.Resources>
+		<Style x:Key="ModNameTextStyle" TargetType="{x:Type TextBlock}">
+			<Setter Property="TextWrapping" Value="NoWrap"/>
+			<Setter Property="TextTrimming" Value="None"/>
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="Margin" Value="0,0,24,0"></Setter>
+			
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding IsActive}" Value="True">
+					<Setter Property="FontWeight" Value="SemiBold"></Setter>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="InlineActivateButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ActivateButton12}">
+			<Setter Property="Margin" Value="11,0,11,0"></Setter>
+			<Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</DataTrigger>
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="InlineEditButton" TargetType="{x:Type Button}" BasedOn="{StaticResource EditButton12}">
+			<Setter Property="Margin" Value="11,0,11,0"></Setter>
+			<Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</DataTrigger>
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="InlineRemoveButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RemoveButton12}">
+			<Setter Property="Margin" Value="11,0,11,0"></Setter>
+			<Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+			
+			<Style.Triggers>				
+				<DataTrigger Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</DataTrigger>
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Visibility" Value="Hidden"></Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid x:Name="_layoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Column="0" Text="{Binding Name}" Style="{DynamicResource ModNameTextStyle}"/>
+
+		<Button Grid.Column="1" Command="{Binding ActivateCommand}" Style="{DynamicResource InlineActivateButton}" ToolTip="Set mod as active"/>
+		<Button Grid.Column="2" Command="{Binding EditCommand}" Style="{DynamicResource InlineEditButton}" ToolTip="Edit mod"/>
+		<Button Grid.Column="3" Command="{Binding DeleteCommand}" Style="{DynamicResource InlineRemoveButton}" ToolTip="Delete mod"/>
+	</Grid>
+
+</UserControl>
