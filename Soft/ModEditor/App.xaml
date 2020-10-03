@@ -1,0 +1,22 @@
+﻿<Application x:Class="ModEditor.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="ModListWindow.xaml">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="./VVmMap.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/Buttons/ActivateButton.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/Buttons/EditButton.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/Buttons/RemoveButton.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/StackedControls.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/FastTabControl.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/IconButton.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/InlineButton.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/SectionedEditor.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Style/NoCircleExpander.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="./Icons/Icons.xaml"></ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

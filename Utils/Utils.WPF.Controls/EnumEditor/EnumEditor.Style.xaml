@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:local="clr-namespace:Utils.WPF.Controls">
+
+	<!--	Control template	-->
+	<ControlTemplate x:Key="EnumEditorControlTemplate" TargetType="{x:Type local:EnumEditor}">
+		<Border Background="{TemplateBinding Background}"
+				BorderBrush="{TemplateBinding BorderBrush}"
+				BorderThickness="{TemplateBinding BorderThickness}">
+
+			<ItemsControl ItemsSource="{TemplateBinding Items}" ItemTemplate="{TemplateBinding ItemTemplate}"></ItemsControl>
+			
+		</Border>
+	</ControlTemplate>
+	
+	<!--	Flag template	-->
+	<DataTemplate x:Key="EnumFlagItemTemplate" DataType="{x:Type local:EnumFlagItem}">
+		<CheckBox Content="{Binding Value}" IsChecked="{Binding IsChecked}"></CheckBox>
+	</DataTemplate>
+	
+	<!--	Full style	-->
+	<Style TargetType="{x:Type local:EnumEditor}">
+		<Setter Property="Template" Value="{StaticResource EnumEditorControlTemplate}"></Setter>
+		<Setter Property="ItemTemplate" Value="{StaticResource EnumFlagItemTemplate}"></Setter>
+	</Style>
+
+</ResourceDictionary>

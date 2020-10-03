@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="ModEditor.Views.Races.RaceTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:viewRaces="clr-namespace:ModEditor.Views.Races"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="Auto"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<ListBox Grid.Column="0" ItemsSource="{Binding Items}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<viewRaces:RacePreview Padding="3"></viewRaces:RacePreview>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+			
+		</ListBox>
+		<viewRaces:RaceView Grid.Column="1" Race="{Binding SelectedItem}" Margin="7,0,0,0"></viewRaces:RaceView>
+	</Grid>
+</UserControl>

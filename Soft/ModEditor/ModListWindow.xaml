@@ -1,0 +1,13 @@
+﻿<Window x:Class="ModEditor.ModListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="clr-namespace:ModEditor.ViewModels"
+		Title="{Binding HeaderPath}"
+		SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+	
+	<Window.DataContext>
+		<vm:ModListScreenVM></vm:ModListScreenVM>
+	</Window.DataContext>
+
+	<ContentPresenter Content="{Binding .}"/>
+</Window>

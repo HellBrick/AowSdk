@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="ModEditor.Views.AbilityResources.EnchantmentAbilityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+			 xmlns:ctrlLocal="clr-namespace:ModEditor.Views.Controls"
+			 xmlns:aow="clr-namespace:Aow2;assembly=Aow.Core"
+			 xmlns:aowModding="clr-namespace:Aow2.Modding;assembly=Aow.Core"
+			 xmlns:aowModAbilities="clr-namespace:Aow2.Modding.Abilities;assembly=Aow.Core"
+			 xmlns:aowUnits="clr-namespace:Aow2.Units;assembly=Aow.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<ctrl:TextSeparator Grid.Row="0" Text="Ability-specific"></ctrl:TextSeparator>
+		<Grid Grid.Row="1" Style="{StaticResource SectionPanel}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" SharedSizeGroup="_abilityParamLabel"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Row="0" Grid.Column="0" Text="AttackBonus" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding AttackBonus}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="DamageBonus" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding DamageBonus}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+			<TextBlock Grid.Row="2" Grid.Column="0" Text="DefenseBonus" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding DefenseBonus}" Style="{StaticResource ParamTextBox}"></TextBox>
+
+			<TextBlock Grid.Row="3" Grid.Column="0" Text="ResistanceBonus" Style="{StaticResource StackedLabelBlock}"></TextBlock>
+			<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ResistanceBonus}" Style="{StaticResource ParamTextBox}"></TextBox>
+		</Grid>
+	</Grid>
+</UserControl>

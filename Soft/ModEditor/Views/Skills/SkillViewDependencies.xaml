@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="ModEditor.Views.SkillViewDependencies"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:ctrl="clr-namespace:Utils.WPF.Controls;assembly=Utils.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+	<UserControl.Resources>
+
+		<Style x:Key="ListBoxHeader" TargetType="{x:Type TextBlock}">
+			<Setter Property="Padding" Value="0,0,4,7"></Setter>
+		</Style>
+
+		<Style x:Key="CheckContainer" TargetType="ContentPresenter">
+			<Setter Property="Margin"  Value="0,3,7,3"></Setter>
+		</Style>
+
+	</UserControl.Resources>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<!--	Dependencies	-->
+		<ctrl:TextSeparator Grid.Row="0" Text="Dependencies"></ctrl:TextSeparator>
+		<Grid Grid.Row="1" Style="{StaticResource SectionPanel}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Row="0" Grid.Column="0" Text="Excludes:" Style="{StaticResource ListBoxHeader}"></TextBlock>
+			<ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto">
+				<ItemsControl ItemsSource="{Binding ExclusionList}" ItemContainerStyle="{StaticResource CheckContainer}"></ItemsControl>
+			</ScrollViewer>			
+
+			<!--<TextBlock Grid.Row="0" Grid.Column="1" Text="Requires:" Style="{StaticResource ListBoxHeader}"></TextBlock>
+			<ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding RequiredList}" ItemContainerStyle="{StaticResource CheckContainer}"></ItemsControl>-->
+		</Grid>
+	</Grid>
+</UserControl>
+
