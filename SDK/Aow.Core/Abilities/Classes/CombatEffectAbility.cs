@@ -9,4 +9,9 @@
 	public class WindWardAbility : CombatEffectAbility
 	{
 	}
+
+	[AowClass( ID = 0x0121000e )]
+	public class WeakenedAbility : CombatEffectAbility
+	{
+	}
 }
