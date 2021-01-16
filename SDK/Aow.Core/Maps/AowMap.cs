@@ -68,6 +68,7 @@ namespace Aow2.Maps
 
 		public int ModID { get; set; }
 		public int ClassID { get; set; }
+		public int HmSignature { get; set; }
 
 		[Field( 0x13 )] public MapHeader PreviewHeader { get; set; }
 		[Field( 0x15 )] public LongPascalString Description { get; set; }

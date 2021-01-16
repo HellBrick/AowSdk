@@ -10,7 +10,6 @@ namespace Aow2.Maps.Internal
 	internal static class MapFormatHelper
 	{
 		private const int _signature1 = 0x00000018;
-		private const int _signature2 = 0x00584d48;
 		private static readonly byte[] _signatureCFS = { 0x43, 0x46, 0x53, 0x00, 0x02 };
 
 		private static AowSerializer<AowMap> _mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
@@ -18,7 +17,7 @@ namespace Aow2.Maps.Internal
 
 		public static AowMap ReadMapFromStream( Stream inputStream )
 		{
-			(int modId, int mapClassId, int headerLength) = ReadPreHeader( inputStream );
+			(int modId, int mapClassId, int hmSignature, int headerLength) = ReadPreHeader( inputStream );
 
 			//	Header stream
 			inputStream.Position += headerLength;
@@ -39,6 +38,7 @@ namespace Aow2.Maps.Internal
 				AowMap map = _mapSerializer.Deserialize( dataStream );
 				map.ModID = modId;
 				map.ClassID = mapClassId;
+				map.HmSignature = hmSignature;
 				return map;
 			}
 		}
@@ -55,7 +55,7 @@ namespace Aow2.Maps.Internal
 			}
 		}
 
-		private static (int modId, int mapClassId, int headerLength) ReadPreHeader( Stream inputStream )
+		private static (int modId, int mapClassId, int hmSignature, int headerLength) ReadPreHeader( Stream inputStream )
 		{
 			BinaryReader reader = new BinaryReader( inputStream );
 
@@ -64,7 +64,7 @@ namespace Aow2.Maps.Internal
 			ValidateSignature( _signature1, signature1, inputStream.Position - sizeof( int ) );
 
 			//	Signature 2
-			int signature2 = reader.ReadInt32();
+			int hmSignature = reader.ReadInt32();
 
 			//	Header length, IDs
 			inputStream.Position += 4; //	always 0
@@ -72,7 +72,7 @@ namespace Aow2.Maps.Internal
 			int modID = reader.ReadInt32();
 			int mapClassID = reader.ReadInt32();
 
-			return (modID, mapClassID, headerLength);
+			return (modID, mapClassID, hmSignature, headerLength);
 		}
 
 		public static void WriteToStream( AowMap map, Stream outStream )
@@ -88,7 +88,7 @@ namespace Aow2.Maps.Internal
 
 				BinaryWriter writer = new BinaryWriter( outStream );
 				writer.Write( _signature1 );
-				writer.Write( _signature2 );
+				writer.Write( map.HmSignature );
 				writer.Write( (int) 0 );
 
 				writer.Write( (int) headerStream.Length );
