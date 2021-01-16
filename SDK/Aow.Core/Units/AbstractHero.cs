@@ -54,7 +54,7 @@ namespace Aow2.Units
 
 		[Field( 0x2f )] public AowList<Item> InventoryItems { get; set; }
 		[Field( 0x30 )] public AowList<Item> EquippedItems { get; set; }
-		[Field( 0x32 )] public PackedImage Image { get; set; }
+		[Field( 0x32 )] public UnknownData Image { get; set; }
 
 		[Field( 0x2c )] public AowList<Spell> _UnknownData2c;
 		[Field( 0x1e )] public int _int1e;		
