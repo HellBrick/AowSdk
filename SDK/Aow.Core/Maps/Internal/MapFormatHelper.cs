@@ -15,27 +15,6 @@ namespace Aow2.Maps.Internal
 		private static AowSerializer<AowMap> _mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
 		private static AowSerializer<MapHeaderBase> _headerSerializer = new AowSerializer<MapHeaderBase>( hasRootWrapper: true );
 
-		internal static (int modId, int mapClassId, int hmSignature, MemoryStream dataStream) ReadPreHeaderAndDecompressDataStream( Stream inputStream )
-		{
-			(int modId, int mapClassId, int hmSignature, int headerLength) = ReadPreHeader( inputStream );
-
-			//	Header stream
-			inputStream.Position += headerLength;
-
-			//	CFS signature
-			ValidateSignature( new BinaryReader( inputStream ), _signatureCFS );
-
-			//	Data stream
-			MemoryStream dataStream = new MemoryStream();
-			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
-			{
-				zlib.CopyTo( dataStream );
-			}
-
-			dataStream.Position = 0;
-			return (modId, mapClassId, hmSignature, dataStream);
-		}
-
 		public static AowMap ReadMapFromStream( Stream inputStream )
 		{
 			(int modId, int mapClassId, int hmSignature, MemoryStream dataStream) = ReadPreHeaderAndDecompressDataStream( inputStream );
@@ -56,6 +35,27 @@ namespace Aow2.Maps.Internal
 				headerStream.Position = 0;
 				return _headerSerializer.Deserialize( headerStream ) as MapHeader;
 			}
+		}
+
+		internal static (int modId, int mapClassId, int hmSignature, MemoryStream dataStream) ReadPreHeaderAndDecompressDataStream( Stream inputStream )
+		{
+			(int modId, int mapClassId, int hmSignature, int headerLength) = ReadPreHeader( inputStream );
+
+			//	Header stream
+			inputStream.Position += headerLength;
+
+			//	CFS signature
+			ValidateSignature( new BinaryReader( inputStream ), _signatureCFS );
+
+			//	Data stream
+			MemoryStream dataStream = new MemoryStream();
+			using ( ZlibStream zlib = new ZlibStream( inputStream, CompressionMode.Decompress, leaveOpen: true ) )
+			{
+				zlib.CopyTo( dataStream );
+			}
+
+			dataStream.Position = 0;
+			return (modId, mapClassId, hmSignature, dataStream);
 		}
 
 		private static (int modId, int mapClassId, int hmSignature, int headerLength) ReadPreHeader( Stream inputStream )
