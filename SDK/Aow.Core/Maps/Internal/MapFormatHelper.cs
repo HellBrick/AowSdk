@@ -15,7 +15,7 @@ namespace Aow2.Maps.Internal
 		private static AowSerializer<AowMap> _mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
 		private static AowSerializer<MapHeaderBase> _headerSerializer = new AowSerializer<MapHeaderBase>( hasRootWrapper: true );
 
-		public static AowMap ReadMapFromStream( Stream inputStream )
+		internal static (int modId, int mapClassId, int hmSignature, MemoryStream dataStream) ReadPreHeaderAndDecompressDataStream( Stream inputStream )
 		{
 			(int modId, int mapClassId, int hmSignature, int headerLength) = ReadPreHeader( inputStream );
 
@@ -33,6 +33,12 @@ namespace Aow2.Maps.Internal
 			}
 
 			dataStream.Position = 0;
+			return (modId, mapClassId, hmSignature, dataStream);
+		}
+
+		public static AowMap ReadMapFromStream( Stream inputStream )
+		{
+			(int modId, int mapClassId, int hmSignature, MemoryStream dataStream) = ReadPreHeaderAndDecompressDataStream( inputStream );
 			AowMap map = _mapSerializer.Deserialize( dataStream );
 			map.ModID = modId;
 			map.ClassID = mapClassId;
