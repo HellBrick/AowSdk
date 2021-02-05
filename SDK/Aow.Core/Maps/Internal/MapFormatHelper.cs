@@ -32,15 +32,12 @@ namespace Aow2.Maps.Internal
 				zlib.CopyTo( dataStream );
 			}
 
-			using ( dataStream )
-			{
-				dataStream.Position = 0;
-				AowMap map = _mapSerializer.Deserialize( dataStream );
-				map.ModID = modId;
-				map.ClassID = mapClassId;
-				map.HmSignature = hmSignature;
-				return map;
-			}
+			dataStream.Position = 0;
+			AowMap map = _mapSerializer.Deserialize( dataStream );
+			map.ModID = modId;
+			map.ClassID = mapClassId;
+			map.HmSignature = hmSignature;
+			return map;
 		}
 
 		public static MapHeader ReadHeaderFromStream( Stream inputStream )
