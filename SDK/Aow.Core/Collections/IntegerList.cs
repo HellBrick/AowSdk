@@ -31,19 +31,42 @@ namespace Aow2.Collections
 
 		void ICustomFormatted.Serialize( Stream outStream )
 		{
-			//	A dirty hack to fix the idiocy of AirElemental's icon frame table
-			while ( this.Any( x => x == DefaultValue ) )
-			{
-				DefaultValue--;
-			}
-
 			BinaryWriter output = new BinaryWriter( outStream );
 
 			output.Write( DefaultValue );
 			output.Write( Count );
 
-			foreach ( int value in this )
-				output.Write( value );
+			int? currentDefaultValueSequenceStartIndex = null;
+			int currentItemIndex = 0;
+
+			for ( ; currentItemIndex < Count; currentItemIndex++ )
+			{
+				int currentValue = this[ currentItemIndex ];
+				if ( currentValue == DefaultValue )
+				{
+					if ( !currentDefaultValueSequenceStartIndex.HasValue )
+					{
+						output.Write( currentValue );
+						currentDefaultValueSequenceStartIndex = currentItemIndex;
+					}
+				}
+				else
+				{
+					TryFinalizeDefaultValueSequence();
+					output.Write( currentValue );
+				}
+			}
+
+			TryFinalizeDefaultValueSequence();
+
+			void TryFinalizeDefaultValueSequence()
+			{
+				if ( currentDefaultValueSequenceStartIndex is int sequenceStartIndex )
+				{
+					output.Write( currentItemIndex - sequenceStartIndex );
+					currentDefaultValueSequenceStartIndex = null;
+				}
+			}
 		}
 
 		void ICustomFormatted.Deserialize( Stream inStream, long length )
