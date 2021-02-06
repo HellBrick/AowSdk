@@ -111,7 +111,7 @@ namespace Aow2.Maps
 
 		[Field( 0x4b )] public WorldMapBuilderSettings RandomSettings { get; set; }
 
-		[Field( 0x0a )] public AowDictionary<MapLevel> levels;
+		[Field( 0x0a, Order = 1 )] public AowDictionary<MapLevel> levels;
 
 		[Field( 0x28 )] private UnitControl _unitControl;  //	inner list is always empty
 

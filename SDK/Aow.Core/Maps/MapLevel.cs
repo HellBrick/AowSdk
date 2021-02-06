@@ -7,7 +7,7 @@
 		[Field( 0x15 )] public int Height { get; set; }
 		[Field( 0x16 )] public MapLevelType Type { get; set; }
 
-		[Field( 0x0a )] public UnknownData Data { get; set; }
+		[Field( 0x0a, Order = 1 )] public UnknownData Data { get; set; }
 	}
 
 	public enum MapLevelType : int
