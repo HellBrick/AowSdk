@@ -8,6 +8,7 @@ namespace Aow2
 		public AowClassAttribute() => ID = AbstractID;
 
 		public int ID { get; set; }
+		public bool InvertHierarchyFieldOrder { get; set; }
 
 		internal const int AbstractID = Int32.MinValue;
 	}

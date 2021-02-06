@@ -14,6 +14,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 	internal class ClassFieldProvider: IFieldProvider
 	{
 		private Type _type;
+		private readonly bool _invertHierarchyFieldOrder;
 		private Dictionary<FieldBase, FieldInfo> _subFormatters;
 		private List<FieldBase> _fields;
 		private FieldInfo _keyListField;
@@ -21,6 +22,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 		public ClassFieldProvider( Type type )
 		{
 			_type = type;
+			_invertHierarchyFieldOrder = type.GetCustomAttribute<AowClassAttribute>().InvertHierarchyFieldOrder;
 
 			FindFields();
 			CreateSubFormatterFields();
@@ -135,7 +137,9 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 
 			_fields = fields
 				.Concat( properties )
-				.OrderBy( f => f.ID )
+				.OrderBy( f => f.DeclaringType, new InheritanceChainTypeComparer( _invertHierarchyFieldOrder ) )
+				.ThenBy( f => f.Order )
+				.ThenBy( f => f.ID )
 				.ToList();
 		}
 
@@ -208,6 +212,25 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				caseExpressions.Add( caseExpression );
 			}
 			return caseExpressions.ToArray();
+		}
+
+		private class InheritanceChainTypeComparer : IComparer<Type>
+		{
+			private readonly bool _invertHierarchyFieldOrder;
+
+			public InheritanceChainTypeComparer( bool invertHierarchyFieldOrder ) => _invertHierarchyFieldOrder = invertHierarchyFieldOrder;
+
+			public int Compare( Type x, Type y )
+			{
+				int normalComparisonResult = CompareInternal( x, y );
+				return normalComparisonResult * ( _invertHierarchyFieldOrder ? -1 : 1 );
+			}
+
+			private int CompareInternal( Type x, Type y )
+				=> x == y ? 0
+				: x.IsAssignableFrom( y ) ? -1
+				: y.IsAssignableFrom( x ) ? 1
+				: throw new InvalidOperationException( $"There's no possible assignment between {x.AssemblyQualifiedName} and {y.AssemblyQualifiedName}." );
 		}
 	}
 }
