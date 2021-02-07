@@ -48,6 +48,23 @@ namespace Aow2.Maps
 
 		[Field( 0x100 )] public int OutpostCount { get; set; }
 
+		// These are probably racial razed city counters
+		[Field( 0x101 )] private byte _u_101;
+		[Field( 0x102 )] private byte _u_102;
+		[Field( 0x103 )] private byte _u_103;
+		[Field( 0x104 )] private byte _u_104;
+		[Field( 0x105 )] private byte _u_105;
+		[Field( 0x106 )] private byte _u_106;
+		[Field( 0x107 )] private byte _u_107;
+		[Field( 0x108 )] private byte _u_108;
+		[Field( 0x109 )] private byte _u_109;
+		[Field( 0x10a )] private byte _u_10a;
+		[Field( 0x10b )] private byte _u_10b;
+		[Field( 0x10c )] private byte _u_10c;
+		[Field( 0x10d )] private byte _u_10d;
+		[Field( 0x10e )] private byte _u_10e;
+		[Field( 0x10f )] private byte _u_10f;
+
 		public bool IsAlive => ( u_enum_0a == 1 ) && ( u_enum_19 == 0 );
 		public bool IsKilled => !IsAlive;
 
