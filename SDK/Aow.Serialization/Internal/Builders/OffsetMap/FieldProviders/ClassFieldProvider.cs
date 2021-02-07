@@ -133,7 +133,10 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				.SelectMany( rec => rec.Attributes.Select( attr => new Property( rec.Property, attr ) ) )
 				.OfType<FieldBase>();
 
-			_fields = new List<FieldBase>( fields.Concat( properties ).OrderBy( f => f.ID ) );
+			_fields = fields
+				.Concat( properties )
+				.OrderBy( f => f.ID )
+				.ToList();
 		}
 
 		private void CreateSubFormatterFields()
