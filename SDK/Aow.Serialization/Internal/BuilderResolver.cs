@@ -11,6 +11,7 @@ namespace Aow2.Serialization.Internal
 			new CustomFormatterBuilder(),
 			new PrimitiveTypeFormatterBuilder(),
 			new BoolFormatterBuilder(),
+			new NullableFormatterBuilder(),
 			new OffsetMapFormatterBuilder(),
 			new PolymorphClassFormatterBuilder(),
 			new EnumFormatterBuilder()
