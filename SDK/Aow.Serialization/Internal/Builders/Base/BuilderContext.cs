@@ -31,10 +31,6 @@ namespace Aow2.Serialization.Internal.Builders.Base
 		public LambdaExpression DeserializeExpression { get; set; }
 		public LambdaExpression ShouldSkipExpression { get; set; }
 
-		public MethodBuilder SerializeMethod { get; set; }
-		public MethodBuilder DeserializeMethod { get; set; }
-		public MethodBuilder ShouldSkipMethod { get; set; }
-
 		public IFormatter BuildFormatter()
 		{
 			Initialize();
@@ -46,8 +42,6 @@ namespace Aow2.Serialization.Internal.Builders.Base
 			editableFormatter.DeserializationDelegate = DeserializeExpression.Compile();
 			editableFormatter.SerializationDelegate = SerializeExpression.Compile();
 			editableFormatter.ShouldSkipFieldDelegate = ShouldSkipExpression.Compile();
-
-			CreateDebugClass();
 
 			return editableFormatter as IFormatter;
 		}
@@ -81,21 +75,5 @@ namespace Aow2.Serialization.Internal.Builders.Base
 		}
 
 		protected abstract Expression CreateShouldSkipExpression();
-
-		public void CreateDebugClass()
-		{
-			TypeBuilder debugClass = GeneratedAssembly.CreateType( TargetType.Name + "Formatter" );
-
-			SerializeMethod = debugClass.DefineMethod( "Serialize", _staticMethodAttributes, typeof( void ), SerializeParams.Types );
-			SerializeExpression.CompileToMethod( SerializeMethod );
-
-			DeserializeMethod = debugClass.DefineMethod( "Deserialize", _staticMethodAttributes, TargetType, DeserializeParams.Types );
-			DeserializeExpression.CompileToMethod( DeserializeMethod );
-
-			ShouldSkipMethod = debugClass.DefineMethod( "ShouldSkip", _staticMethodAttributes, typeof( bool ), new Type[] { TargetType } );
-			ShouldSkipExpression.CompileToMethod( ShouldSkipMethod );
-
-			debugClass.CreateType();
-		}
 	}
 }
