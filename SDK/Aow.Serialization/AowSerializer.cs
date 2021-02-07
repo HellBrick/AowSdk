@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Aow2.Serialization.Internal;
+using Aow2.Serialization.Logging;
 
 namespace Aow2.Serialization
 {
@@ -31,9 +32,13 @@ namespace Aow2.Serialization
 				_formatter = new WrappingFormatterProxy( _formatter );
 		}
 
-		public T Deserialize( Stream inStream ) => Deserialize( inStream, 0, inStream.Length );
+		public T Deserialize( Stream inStream ) => Deserialize( inStream, NoOpSerializationLogger.Instance );
 
-		public T Deserialize( Stream inStream, long offset, long length ) => _formatter.Deserialize( inStream, offset, length );
+		public T Deserialize( Stream inStream, ISerializationLogger logger ) => Deserialize( inStream, 0, inStream.Length, logger );
+
+		public T Deserialize( Stream inStream, long offset, long length ) => Deserialize( inStream, offset, length, NoOpSerializationLogger.Instance );
+
+		public T Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger ) => _formatter.Deserialize( inStream, offset, length, logger );
 
 		public void Serialize( Stream outStream, T value ) => _formatter.Serialize( outStream, value );
 
@@ -50,7 +55,7 @@ namespace Aow2.Serialization
 				_wrappedFormatter.Serialize( outStream, value );
 			}
 
-			public T Deserialize( Stream inStream, long offset, long length ) => _wrappedFormatter.Deserialize( inStream, offset + _wrapperBytes.Length, length - _wrapperBytes.Length );
+			public T Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger ) => _wrappedFormatter.Deserialize( inStream, offset + _wrapperBytes.Length, length - _wrapperBytes.Length, logger );
 		}
 	}
 }

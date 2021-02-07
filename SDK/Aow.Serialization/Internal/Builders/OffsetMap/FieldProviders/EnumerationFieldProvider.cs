@@ -89,7 +89,8 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 						_itemFormatterType.GetMethod( "Deserialize" ),
 						context.DeserializeParams.Stream,
 						Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordOffset ),
-						Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordLength ) ) ),
+						Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordLength ),
+						context.DeserializeParams.Logger ) ),
 
 				AddItemExpression( new ItemFieldContext( context, item ) ) );
 		}

@@ -2,6 +2,7 @@
 using Aow.Test.Serialization.Resources;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
+using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -37,7 +38,7 @@ namespace Aow2.Test.Serialization
 		{
 			using ( MemoryStream memory = new MemoryStream( Files.DerivedOne ) )
 			{
-				AbstractMock deserialized = _formatter.Deserialize( memory, 0, memory.Length );
+				AbstractMock deserialized = _formatter.Deserialize( memory, 0, memory.Length, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( _derivedOne, deserialized );
 			}
 		}

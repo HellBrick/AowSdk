@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Aow2.Serialization.Logging;
 
 namespace Aow2.Serialization.Internal.Builders
 {
@@ -20,8 +21,8 @@ namespace Aow2.Serialization.Internal.Builders
 
 			public override bool ShouldSkipField( T? value ) => value is null;
 
-			public override T? Deserialize( Stream inStream, long offset, long length )
-				=> _underlyingFormatter.Deserialize( inStream, offset, length );
+			public override T? Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
+				=> _underlyingFormatter.Deserialize( inStream, offset, length, logger );
 
 			public override void Serialize( Stream outStream, T? value )
 				=> _underlyingFormatter.Serialize( outStream, value.Value );

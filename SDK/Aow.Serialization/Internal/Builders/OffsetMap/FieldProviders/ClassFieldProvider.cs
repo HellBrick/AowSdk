@@ -11,7 +11,7 @@ using Utils.Runtime;
 
 namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 {
-	internal class ClassFieldProvider: IFieldProvider
+	internal class ClassFieldProvider : IFieldProvider
 	{
 		private Type _type;
 		private readonly bool _invertHierarchyFieldOrder;
@@ -107,7 +107,8 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 								formatterType.GetMethod( "Deserialize" ),
 								context.DeserializeParams.Stream,
 								Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordOffset ),
-								Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordLength ) ),
+								Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordLength ),
+								context.DeserializeParams.Logger ),
 							field.Type ) )
 				) );
 
@@ -172,7 +173,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 			{
 				FieldInfo realFieldInfo = helperType.GetField( pair.Key );
 				realFieldInfo.SetValue( null, pair.Value );
-				_subFormatters.Add( fieldMap[pair.Key], realFieldInfo );
+				_subFormatters.Add( fieldMap[ pair.Key ], realFieldInfo );
 			}
 
 			_keyListField = helperType.GetField( keyListFieldBuilder.Name );
@@ -192,7 +193,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				Expression formatterExpression =
 					Expression.TypeAs(
 						Expression.Property(
-							Expression.Field( null, _subFormatters[field] ),
+							Expression.Field( null, _subFormatters[ field ] ),
 							_taskResult ),
 						formatterType );
 

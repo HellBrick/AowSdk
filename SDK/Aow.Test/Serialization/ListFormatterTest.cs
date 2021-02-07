@@ -3,6 +3,7 @@ using System.IO;
 using Aow.Test.Serialization.Resources;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
+using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -63,7 +64,7 @@ namespace Aow2.Test.Serialization
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.ListItem ) )
 			{
-				ListMock deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				ListMock deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				CollectionAssert.AreEqual( _simpleList.List, deserialized.List );
 			}
 		}
@@ -84,7 +85,7 @@ namespace Aow2.Test.Serialization
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.PolymorphListItem ) )
 			{
-				ListMock deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				ListMock deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				CollectionAssert.AreEqual( _polymorphList.List, deserialized.List );
 			}
 		}
@@ -110,7 +111,7 @@ namespace Aow2.Test.Serialization
 				_formatter.Serialize( stream, original );
 
 				stream.Position = 0;
-				ListMock roundTripped = _formatter.Deserialize( stream, 0, stream.Length );
+				ListMock roundTripped = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 
 				roundTripped.Should().BeEquivalentTo( original );
 			}

@@ -54,7 +54,8 @@ namespace Aow2.Serialization.Internal.Builders
 							UnderlyingFormatterField.FieldType.GetMethod( "Deserialize" ),
 							DeserializeParams.Stream,
 							DeserializeParams.Offset,
-							DeserializeParams.Length
+							DeserializeParams.Length,
+							DeserializeParams.Logger
 							),
 						TargetType ) );
 

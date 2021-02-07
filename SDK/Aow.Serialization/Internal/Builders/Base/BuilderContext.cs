@@ -61,7 +61,7 @@ namespace Aow2.Serialization.Internal.Builders.Base
 		private void CreateDeserializeMethod()
 		{
 			Expression deserializeBlock = CreateDeserializeExpression();
-			DeserializeExpression = Expression.Lambda( deserializeBlock, DeserializeParams.Stream, DeserializeParams.Offset, DeserializeParams .Length);
+			DeserializeExpression = Expression.Lambda( deserializeBlock, DeserializeParams.Stream, DeserializeParams.Offset, DeserializeParams.Length, DeserializeParams.Logger );
 		}
 
 		protected abstract Expression CreateDeserializeExpression();

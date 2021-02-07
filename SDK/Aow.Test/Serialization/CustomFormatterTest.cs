@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
+using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -35,7 +36,7 @@ namespace Aow2.Test.Serialization
 			byte[] bytes = Encoding.ASCII.GetBytes( _value.Value );
 			using ( MemoryStream stream = new MemoryStream( bytes ) )
 			{
-				CustomFormatterMock deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				CustomFormatterMock deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( _value, deserialized );
 			}
 		}

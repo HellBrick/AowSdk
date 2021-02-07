@@ -27,6 +27,8 @@ namespace Utils.Runtime
 		public static MethodInfo Method<TArg1, TArg2, TArg3>( Expression<Action<TArg1, TArg2, TArg3>> expr ) => MethodImpl( expr as LambdaExpression );
 
 		public static MethodInfo Method<TArg1, TArg2, TArg3, TArg4>( Expression<Action<TArg1, TArg2, TArg3, TArg4>> expr ) => MethodImpl( expr as LambdaExpression );
+		
+		public static MethodInfo Method<TArg1, TArg2, TArg3, TArg4, TArg5>( Expression<Action<TArg1, TArg2, TArg3, TArg4, TArg5>> expr ) => MethodImpl( expr as LambdaExpression );
 
 		public static MethodInfo Method<TArg>( Expression<Func<TArg>> expr ) => MethodImpl( expr as LambdaExpression );
 
@@ -35,6 +37,8 @@ namespace Utils.Runtime
 		public static MethodInfo Method<TArg1, TArg2, TArg3>( Expression<Func<TArg1, TArg2, TArg3>> expr ) => MethodImpl( expr as LambdaExpression );
 
 		public static MethodInfo Method<TArg1, TArg2, TArg3, TArg4>( Expression<Func<TArg1, TArg2, TArg3, TArg4>> expr ) => MethodImpl( expr as LambdaExpression );
+
+		public static MethodInfo Method<TArg1, TArg2, TArg3, TArg4, TArg5>( Expression<Func<TArg1, TArg2, TArg3, TArg4, TArg5>> expr ) => MethodImpl( expr as LambdaExpression );
 
 		private static MethodInfo MethodImpl( LambdaExpression expr ) => ( expr.Body as MethodCallExpression ).Method;
 

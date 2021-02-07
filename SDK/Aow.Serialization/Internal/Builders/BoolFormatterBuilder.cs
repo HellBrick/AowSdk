@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Aow2.Serialization.Logging;
 
 namespace Aow2.Serialization.Internal.Builders
 {
@@ -11,7 +12,7 @@ namespace Aow2.Serialization.Internal.Builders
 			{
 			}
 
-			public override bool Deserialize( Stream inStream, long offset, long length ) => true;
+			public override bool Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger ) => true;
 
 			public override bool ShouldSkipField( bool value ) => !value;
 		}
