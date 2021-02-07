@@ -40,6 +40,8 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 		private static PropertyInfo _streamPositionProperty = Reflection.Property( ( Stream s ) => s.Position );
 		private static PropertyInfo _taskResult = Reflection.Property( ( Task<IFormatter> t ) => t.Result );
 
+		private readonly static ConstructorInfo _fieldAnalysisExceptionCtor = Reflection.Constructor( ( Type t, int id ) => new FieldAnalysisException( t, id ) );
+
 		public int StartingIndex => 0;
 
 		public Expression KeyEnumerableExpression( IOffsetMapBuilderContext context ) => Expression.Field( null, _keyListField );
@@ -84,6 +86,14 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 
 		public Expression DeserializeAndSaveFieldExpression( IFieldContext context ) => Expression.Switch(
 				context.Key,
+
+				defaultBody: Expression.Throw(
+					Expression.New(
+						_fieldAnalysisExceptionCtor,
+						Expression.Constant( _type, typeof( Type ) ),
+						Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordID )
+					)
+				),
 
 				FieldCases(
 					( field, formatter, formatterType ) =>
