@@ -3,6 +3,6 @@
 	[AowClass( ID = 0x011001be )]
 	public class Leadership : GroupAbility
 	{
-		[Field( 0x28 )] public byte u_28;
+		[Field( 0x28 )] public byte? u_28;
 	}
 }

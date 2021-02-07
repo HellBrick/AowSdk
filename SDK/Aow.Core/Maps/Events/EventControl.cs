@@ -13,7 +13,7 @@ namespace Aow2.Maps.Events
 		#region Generated
 
 		[Field( 0x1f )]
-		public int u_1f;
+		public int? u_1f;
 
 		#endregion
 	}

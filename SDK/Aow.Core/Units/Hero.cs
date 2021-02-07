@@ -10,7 +10,7 @@
 			set => _description = value;
 		}
 
-		[Field( 0x46 )] public byte _byte46;
-		[Field( 0x48 )] public int _int48;
+		[Field( 0x46 )] public byte? _byte46;
+		[Field( 0x48 )] public int? _int48;
 	}
 }

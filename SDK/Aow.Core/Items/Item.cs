@@ -20,21 +20,21 @@ namespace Aow2.Items
 		[Field( 0x2a, Order = 2 )] public ItemType Type { get; set; }
 		[Field( 0x22 )] public Availability Availability { get; set; }
 
-		[Field( 0x26, Order = 2 )] public byte Damage { get; set; }
-		[Field( 0x27, Order = 2 )] public byte Attack { get; set; }
-		[Field( 0x28, Order = 2 )] public byte Resistance { get; set; }
-		[Field( 0x29, Order = 2 )] public byte Defense { get; set; }
+		[Field( 0x26, Order = 2 )] public byte? Damage { get; set; }
+		[Field( 0x27, Order = 2 )] public byte? Attack { get; set; }
+		[Field( 0x28, Order = 2 )] public byte? Resistance { get; set; }
+		[Field( 0x29, Order = 2 )] public byte? Defense { get; set; }
 
 		[Field( 0x1f )] public ItemAbilityList Abilities { get; set; }
 
 		[Field( 0x2b, Order = 2 )] public Spirits RewardingSpirits { get; set; }
 
-		[Field( 0x20 )] public int GoldCost { get; set; }
-		[Field( 0x21 )] public int ImageIndex { get; set; }
-		[Field( 0x24, Order = 1 )] public int CreationIndex { get; set; }
+		[Field( 0x20 )] public int? GoldCost { get; set; }
+		[Field( 0x21 )] public int? ImageIndex { get; set; }
+		[Field( 0x24, Order = 1 )] public int? CreationIndex { get; set; }
 
 
-		[Field( 0x1e )] public int UnknownInt1E { get; set; }
+		[Field( 0x1e )] public int? UnknownInt1E { get; set; }
 
 		[Field( 0x23, Order = 2 )] private ShortPascalString _name = "";
 		[Field( 0x25, Order = 2 )] private ShortPascalString _libraryName = "";

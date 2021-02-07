@@ -12,8 +12,8 @@ namespace Aow2.Maps.Statistics
 
 		#region Generated
 
-		[Field( 0x15 )] public int _int15;
-		[Field( 0x16 )] public int _int16;
+		[Field( 0x15 )] public int? _int15;
+		[Field( 0x16 )] public int? _int16;
 
 		#endregion
 	}
