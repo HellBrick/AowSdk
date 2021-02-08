@@ -2,7 +2,7 @@
 
 namespace Aow2.Items
 {
-	[AowClass]
+	[AowClass( InvertHierarchyFieldOrder = true )]
 	public class ItemAbilityList : AowList<Ability>
 	{
 		[Field( 0x1e )]
