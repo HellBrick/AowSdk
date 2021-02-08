@@ -11,9 +11,10 @@ using Utils.Runtime;
 
 namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 {
-	internal class ClassFieldProvider: IFieldProvider
+	internal class ClassFieldProvider : IFieldProvider
 	{
 		private Type _type;
+		private readonly bool _invertHierarchyFieldOrder;
 		private Dictionary<FieldBase, FieldInfo> _subFormatters;
 		private List<FieldBase> _fields;
 		private FieldInfo _keyListField;
@@ -21,6 +22,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 		public ClassFieldProvider( Type type )
 		{
 			_type = type;
+			_invertHierarchyFieldOrder = type.GetCustomAttribute<AowClassAttribute>().InvertHierarchyFieldOrder;
 
 			FindFields();
 			CreateSubFormatterFields();
@@ -39,6 +41,8 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 		private static ConstructorInfo _fieldLengthInfoCtor = Reflection.Constructor( ( int id, long length ) => new FieldLengthInfo( id, length ) );
 		private static PropertyInfo _streamPositionProperty = Reflection.Property( ( Stream s ) => s.Position );
 		private static PropertyInfo _taskResult = Reflection.Property( ( Task<IFormatter> t ) => t.Result );
+
+		private readonly static ConstructorInfo _fieldAnalysisExceptionCtor = Reflection.Constructor( ( Type t, int id ) => new FieldAnalysisException( t, id ) );
 
 		public int StartingIndex => 0;
 
@@ -85,6 +89,14 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 		public Expression DeserializeAndSaveFieldExpression( IFieldContext context ) => Expression.Switch(
 				context.Key,
 
+				defaultBody: Expression.Throw(
+					Expression.New(
+						_fieldAnalysisExceptionCtor,
+						Expression.Constant( _type, typeof( Type ) ),
+						Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordID )
+					)
+				),
+
 				FieldCases(
 					( field, formatter, formatterType ) =>
 					Expression.Assign(
@@ -95,7 +107,8 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 								formatterType.GetMethod( "Deserialize" ),
 								context.DeserializeParams.Stream,
 								Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordOffset ),
-								Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordLength ) ),
+								Expression.Property( context.ParseFieldParams.OffsetRecord, _readRecordLength ),
+								context.DeserializeParams.Logger ),
 							field.Type ) )
 				) );
 
@@ -123,7 +136,12 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				.SelectMany( rec => rec.Attributes.Select( attr => new Property( rec.Property, attr ) ) )
 				.OfType<FieldBase>();
 
-			_fields = new List<FieldBase>( fields.Concat( properties ).OrderBy( f => f.ID ) );
+			_fields = fields
+				.Concat( properties )
+				.OrderBy( f => f.DeclaringType, new InheritanceChainTypeComparer( _invertHierarchyFieldOrder ) )
+				.ThenBy( f => f.Order )
+				.ThenBy( f => f.ID )
+				.ToList();
 		}
 
 		private void CreateSubFormatterFields()
@@ -155,7 +173,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 			{
 				FieldInfo realFieldInfo = helperType.GetField( pair.Key );
 				realFieldInfo.SetValue( null, pair.Value );
-				_subFormatters.Add( fieldMap[pair.Key], realFieldInfo );
+				_subFormatters.Add( fieldMap[ pair.Key ], realFieldInfo );
 			}
 
 			_keyListField = helperType.GetField( keyListFieldBuilder.Name );
@@ -175,7 +193,7 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				Expression formatterExpression =
 					Expression.TypeAs(
 						Expression.Property(
-							Expression.Field( null, _subFormatters[field] ),
+							Expression.Field( null, _subFormatters[ field ] ),
 							_taskResult ),
 						formatterType );
 
@@ -195,6 +213,25 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders
 				caseExpressions.Add( caseExpression );
 			}
 			return caseExpressions.ToArray();
+		}
+
+		private class InheritanceChainTypeComparer : IComparer<Type>
+		{
+			private readonly bool _invertHierarchyFieldOrder;
+
+			public InheritanceChainTypeComparer( bool invertHierarchyFieldOrder ) => _invertHierarchyFieldOrder = invertHierarchyFieldOrder;
+
+			public int Compare( Type x, Type y )
+			{
+				int normalComparisonResult = CompareInternal( x, y );
+				return normalComparisonResult * ( _invertHierarchyFieldOrder ? -1 : 1 );
+			}
+
+			private int CompareInternal( Type x, Type y )
+				=> x == y ? 0
+				: x.IsAssignableFrom( y ) ? -1
+				: y.IsAssignableFrom( x ) ? 1
+				: throw new InvalidOperationException( $"There's no possible assignment between {x.AssemblyQualifiedName} and {y.AssemblyQualifiedName}." );
 		}
 	}
 }

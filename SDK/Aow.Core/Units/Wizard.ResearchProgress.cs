@@ -63,14 +63,14 @@ namespace Aow2.Units
 
 			protected override IEnumerable<ResearchProgress.Accessor> SlotAccessors()
 			{
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress0, Set = ( w, v ) => w._spellProgress0 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress1, Set = ( w, v ) => w._spellProgress1 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress2, Set = ( w, v ) => w._spellProgress2 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress3, Set = ( w, v ) => w._spellProgress3 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress4, Set = ( w, v ) => w._spellProgress4 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress5, Set = ( w, v ) => w._spellProgress5 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress6, Set = ( w, v ) => w._spellProgress6 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress7, Set = ( w, v ) => w._spellProgress7 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress0 ?? 0, Set = ( w, v ) => w._spellProgress0 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress1 ?? 0, Set = ( w, v ) => w._spellProgress1 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress2 ?? 0, Set = ( w, v ) => w._spellProgress2 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress3 ?? 0, Set = ( w, v ) => w._spellProgress3 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress4 ?? 0, Set = ( w, v ) => w._spellProgress4 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress5 ?? 0, Set = ( w, v ) => w._spellProgress5 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress6 ?? 0, Set = ( w, v ) => w._spellProgress6 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._spellProgress7 ?? 0, Set = ( w, v ) => w._spellProgress7 = v };
 			}
 		}
 
@@ -83,14 +83,14 @@ namespace Aow2.Units
 
 			protected override IEnumerable<ResearchProgress.Accessor> SlotAccessors()
 			{
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress0, Set = ( w, v ) => w._skillProgress0 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress1, Set = ( w, v ) => w._skillProgress1 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress2, Set = ( w, v ) => w._skillProgress2 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress3, Set = ( w, v ) => w._skillProgress3 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress4, Set = ( w, v ) => w._skillProgress4 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress5, Set = ( w, v ) => w._skillProgress5 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress6, Set = ( w, v ) => w._skillProgress6 = v };
-				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress7, Set = ( w, v ) => w._skillProgress7 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress0 ?? 0, Set = ( w, v ) => w._skillProgress0 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress1 ?? 0, Set = ( w, v ) => w._skillProgress1 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress2 ?? 0, Set = ( w, v ) => w._skillProgress2 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress3 ?? 0, Set = ( w, v ) => w._skillProgress3 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress4 ?? 0, Set = ( w, v ) => w._skillProgress4 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress5 ?? 0, Set = ( w, v ) => w._skillProgress5 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress6 ?? 0, Set = ( w, v ) => w._skillProgress6 = v };
+				yield return new ResearchProgress.Accessor() { Get = ( w ) => w._skillProgress7 ?? 0, Set = ( w, v ) => w._skillProgress7 = v };
 			}
 		}
 	}

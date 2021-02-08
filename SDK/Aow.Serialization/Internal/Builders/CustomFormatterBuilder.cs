@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
+using Aow2.Serialization.Logging;
 using Utils.Runtime;
 
 namespace Aow2.Serialization.Internal.Builders
@@ -12,6 +13,7 @@ namespace Aow2.Serialization.Internal.Builders
 		private static MethodInfo _deserializeMethod = Reflection.Method( ( ICustomFormatted obj, Stream stream, long length ) => obj.Deserialize( stream, length ) );
 		private static MethodInfo _shouldSkipMethod = Reflection.Method( ( ICustomFormatted obj ) => obj.ShouldBeOmitted() );
 		private static PropertyInfo _streamPositionProperty = Reflection.Property( ( Stream obj ) => obj.Position );
+		private static MethodInfo _logBlobMethod = Reflection.Method( ( ISerializationLogger logger, Stream stream, long offset, long length ) => logger.LogBlob( stream, offset, length ) );
 
 		public bool CanCreate( FormatterRequest request ) => !request.IsPolymorph &&
 				typeof( ICustomFormatted ).IsAssignableFrom( request.Type );
@@ -44,12 +46,15 @@ namespace Aow2.Serialization.Internal.Builders
 			ParameterExpression stream = Expression.Parameter( typeof( Stream ), "stream" );
 			ParameterExpression offset = Expression.Parameter( typeof( long ), "offset" );
 			ParameterExpression length = Expression.Parameter( typeof( long ), "length" );
+			ParameterExpression logger = Expression.Parameter( typeof( ISerializationLogger ), "logger" );
 
 			ParameterExpression result = Expression.Parameter( type, "result" );
 
 			Expression readBody =
 				Expression.Block(
 					new ParameterExpression[] { result },
+
+					Expression.Call( logger, _logBlobMethod, stream, offset, length ),
 
 					Expression.Assign(
 						Expression.Property( stream, _streamPositionProperty ),
@@ -62,7 +67,7 @@ namespace Aow2.Serialization.Internal.Builders
 					result
 				);
 
-			LambdaExpression readLambda = Expression.Lambda( readBody, new ParameterExpression[] { stream, offset, length } );
+			LambdaExpression readLambda = Expression.Lambda( readBody, new ParameterExpression[] { stream, offset, length, logger } );
 
 			return readLambda.Compile();
 		}

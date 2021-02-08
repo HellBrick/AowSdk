@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders.OffsetMap;
+using Aow2.Serialization.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Aow2.Test.Serialization
@@ -36,7 +37,7 @@ namespace Aow2.Test.Serialization
 		{
 			using ( MemoryStream stream = new MemoryStream( TestBytes ) )
 			{
-				T deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				T deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( TestValue, deserialized );
 			}
 		}

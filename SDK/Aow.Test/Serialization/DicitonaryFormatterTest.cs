@@ -3,6 +3,7 @@ using System.IO;
 using Aow.Test.Serialization.Resources;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
+using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -66,7 +67,7 @@ namespace Aow2.Test.Serialization
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.Dictionary ) )
 			{
-				DictionaryMock deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				DictionaryMock deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				CollectionAssert.AreEqual( _simpleList.Dictionary, deserialized.Dictionary );
 			}
 		}
@@ -87,7 +88,7 @@ namespace Aow2.Test.Serialization
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.PolymorphDictionary ) )
 			{
-				DictionaryMock deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				DictionaryMock deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				CollectionAssert.AreEqual( _polymorphList.Dictionary, deserialized.Dictionary );
 			}
 		}

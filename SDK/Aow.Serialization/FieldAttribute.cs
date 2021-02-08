@@ -9,5 +9,6 @@ namespace Aow2
 
 		public int ID { get; set; }
 		public bool ImportOnly { get; set; }
+		public int Order { get; set; }
 	}
 }

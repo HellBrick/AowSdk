@@ -49,11 +49,7 @@ namespace Aow2
 
 		#region ICustomFormatted Members
 
-		void ICustomFormatted.Serialize( Stream outStream )
-		{
-			for ( int i = 0; i < 6; i++ )
-				outStream.Write( _list, 0, 6 );
-		}
+		void ICustomFormatted.Serialize( Stream outStream ) => outStream.Write( _list, 0, 6 );
 
 		void ICustomFormatted.Deserialize( Stream inStream, long length )
 		{

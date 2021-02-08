@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Aow2.Serialization.Internal.Builders.Base;
+using Aow2.Serialization.Logging;
 using Utils.Runtime;
 
 namespace Aow2.Serialization.Internal.Builders.OffsetMap
@@ -28,6 +29,9 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap
 
 		private static PropertyInfo _readRecordOffset = Reflection.Property( ( IReadOffsetRecord r ) => r.AbsoluteOffset );
 		private static PropertyInfo _readRecordID = Reflection.Property( ( IReadOffsetRecord r ) => r.ID );
+
+		private static MethodInfo _logFieldStart = Reflection.Method( ( ISerializationLogger l, int id ) => l.LogFieldStart( id ) );
+		private static MethodInfo _logFieldEnd = Reflection.Method( ( ISerializationLogger l ) => l.LogFieldEnd() );
 
 		public OffsetMapBuilderContext( Type targetType, IEnumerable<IFieldProvider> providers )
 			: this( targetType, providers.ToArray() )
@@ -270,6 +274,11 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap
 		private Expression ParseFieldPart( IFieldContext fieldContext, ParseFieldProviderExpressions providerExpressions ) => Expression.Block(
 				new ParameterExpression[] { fieldContext.Key },
 
+				Expression.Call(
+					fieldContext.DeserializeParams.Logger,
+					_logFieldStart,
+					Expression.Property( ParseFieldParams.OffsetRecord, _readRecordID ) ),
+
 				Expression.Assign(
 					fieldContext.Key,
 					Expression.Subtract(
@@ -280,7 +289,9 @@ namespace Aow2.Serialization.Internal.Builders.OffsetMap
 					Expression.Property( DeserializeParams.Stream, _streamPositionProperty ),
 					Expression.Property( ParseFieldParams.OffsetRecord, _readRecordOffset ) ),
 
-				providerExpressions.DeserializeAndSaveFieldExpression );
+				providerExpressions.DeserializeAndSaveFieldExpression,
+
+				Expression.Call( fieldContext.DeserializeParams.Logger, _logFieldEnd ) );
 
 		private class ParseFieldProviderExpressions
 		{

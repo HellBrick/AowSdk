@@ -7,11 +7,11 @@ namespace Aow2
 	public class Ability
 	{
 		[Field( 0x14 )]
-		public int AbilityResourceIndex { get; set; }
+		public int? AbilityResourceIndex { get; set; }
 		[Field( 0x15 )]
-		public sbyte Level { get; set; }
+		public sbyte? Level { get; set; }
 
-		public string AbilityName => ( (AbilityID) AbilityResourceIndex ).ToSplitWordString();
+		public string AbilityName => ( (AbilityID) ( AbilityResourceIndex ?? 0 ) ).ToSplitWordString();
 
 		public override string ToString()
 		{

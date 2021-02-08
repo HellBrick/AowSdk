@@ -17,6 +17,28 @@ namespace Aow2.Maps.Internal
 
 		public static AowMap ReadMapFromStream( Stream inputStream )
 		{
+			(int modId, int mapClassId, int hmSignature, MemoryStream dataStream) = ReadPreHeaderAndDecompressDataStream( inputStream );
+			AowMap map = _mapSerializer.Deserialize( dataStream );
+			map.ModID = modId;
+			map.ClassID = mapClassId;
+			map.HmSignature = hmSignature;
+			return map;
+		}
+
+		public static MapHeader ReadHeaderFromStream( Stream inputStream )
+		{
+			int headerLength = ReadPreHeader( inputStream ).headerLength;
+
+			using ( MemoryStream headerStream = new MemoryStream() )
+			{
+				inputStream.CopyBytesTo( headerStream, headerLength );
+				headerStream.Position = 0;
+				return _headerSerializer.Deserialize( headerStream ) as MapHeader;
+			}
+		}
+
+		internal static (int modId, int mapClassId, int hmSignature, MemoryStream dataStream) ReadPreHeaderAndDecompressDataStream( Stream inputStream )
+		{
 			(int modId, int mapClassId, int hmSignature, int headerLength) = ReadPreHeader( inputStream );
 
 			//	Header stream
@@ -32,27 +54,8 @@ namespace Aow2.Maps.Internal
 				zlib.CopyTo( dataStream );
 			}
 
-			using ( dataStream )
-			{
-				dataStream.Position = 0;
-				AowMap map = _mapSerializer.Deserialize( dataStream );
-				map.ModID = modId;
-				map.ClassID = mapClassId;
-				map.HmSignature = hmSignature;
-				return map;
-			}
-		}
-
-		public static MapHeader ReadHeaderFromStream( Stream inputStream )
-		{
-			int headerLength = ReadPreHeader( inputStream ).headerLength;
-
-			using ( MemoryStream headerStream = new MemoryStream() )
-			{
-				inputStream.CopyBytesTo( headerStream, headerLength );
-				headerStream.Position = 0;
-				return _headerSerializer.Deserialize( headerStream ) as MapHeader;
-			}
+			dataStream.Position = 0;
+			return (modId, mapClassId, hmSignature, dataStream);
 		}
 
 		private static (int modId, int mapClassId, int hmSignature, int headerLength) ReadPreHeader( Stream inputStream )

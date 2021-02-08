@@ -89,8 +89,13 @@ namespace Aow2.Maps
 		}
 
 		[Field( 0x50 )]
-		[Field( 0x58 )]
 		public AdvancedSettings AdvancedSettings { get; set; }
+
+		/// <remarks>
+		/// Apparently, these can be different from <see cref="AdvancedSettings"/>.
+		/// </remarks>
+		[Field( 0x58 )]
+		public AdvancedSettings AdvancedSettings2 { get; set; }
 
 		[Field( 0x59 )] public UserCampaignSettings UserCampaignSettings { get; set; }
 
@@ -106,7 +111,7 @@ namespace Aow2.Maps
 
 		[Field( 0x4b )] public WorldMapBuilderSettings RandomSettings { get; set; }
 
-		[Field( 0x0a )] public AowDictionary<MapLevel> levels;
+		[Field( 0x0a, Order = 1 )] public AowDictionary<MapLevel> levels;
 
 		[Field( 0x28 )] private UnitControl _unitControl;  //	inner list is always empty
 
@@ -119,7 +124,7 @@ namespace Aow2.Maps
 		[Field( 0x1d )] public byte u_enum_1d;
 
 		[Field( 0x1f )] public bool u_1f;
-		[Field( 0x20 )] public int u_20;
+		[Field( 0x20 )] public int? u_20;
 		[Field( 0x21 )] public int u_21;
 		[Field( 0x22 )] public bool u_22;
 
@@ -136,8 +141,8 @@ namespace Aow2.Maps
 
 		[Field( 0x32 )] public bool u_32;
 
-		[Field( 0x34 )] public int u_34;
-		[Field( 0x35 )] public int u_35;
+		[Field( 0x34 )] public int? u_34;
+		[Field( 0x35 )] public int? u_35;
 		[Field( 0x36 )] public TStructureControl u_36;
 
 		[Field( 0x38 )] public bool u_38;
@@ -150,9 +155,9 @@ namespace Aow2.Maps
 		[Field( 0x42 )] public TAIGroupManager u_42;
 
 		[Field( 0x45 )] public TDiplomaticActionControl u_45;
-		[Field( 0x46 )] public int u_46;
-		[Field( 0x47 )] public int u_47;
-		[Field( 0x48 )] public int u_48;
+		[Field( 0x46 )] public int? u_46;
+		[Field( 0x47 )] public int? u_47;
+		[Field( 0x48 )] public int? u_48;
 		[Field( 0x49 )] public bool u_49;
 
 		[Field( 0x4c )] public IntegerList u_4c;
@@ -168,6 +173,6 @@ namespace Aow2.Maps
 		[Field( 0x57 )] public UnknownData u_57;
 
 		[Field( 0x5a )] public TCustomFaceControl u_5a;
-		[Field( 0x5b )] public int u_5b;
+		[Field( 0x5b )] public int? u_5b;
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Aow2.Serialization.Logging;
 
 namespace Aow2.Serialization.Internal.Builders
 {
@@ -28,7 +29,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( long ) );
 			}
 
-			public override long Deserialize( Stream inStream, long offset, long length )
+			public override long Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( long ) ];
@@ -45,7 +46,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( int ) );
 			}
 
-			public override int Deserialize( Stream inStream, long offset, long length )
+			public override int Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( int ) ];
@@ -62,7 +63,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( short ) );
 			}
 
-			public override short Deserialize( Stream inStream, long offset, long length )
+			public override short Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( short ) ];
@@ -79,7 +80,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( ulong ) );
 			}
 
-			public override ulong Deserialize( Stream inStream, long offset, long length )
+			public override ulong Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( ulong ) ];
@@ -96,7 +97,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( uint ) );
 			}
 
-			public override uint Deserialize( Stream inStream, long offset, long length )
+			public override uint Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( uint ) ];
@@ -113,7 +114,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( ushort ) );
 			}
 
-			public override ushort Deserialize( Stream inStream, long offset, long length )
+			public override ushort Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( ushort ) ];
@@ -126,7 +127,7 @@ namespace Aow2.Serialization.Internal.Builders
 		{
 			public override void Serialize( Stream outStream, byte value ) => outStream.WriteByte( value );
 
-			public override byte Deserialize( Stream inStream, long offset, long length )
+			public override byte Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				return (byte) inStream.ReadByte();
@@ -143,7 +144,7 @@ namespace Aow2.Serialization.Internal.Builders
 				}
 			}
 
-			public override sbyte Deserialize( Stream inStream, long offset, long length )
+			public override sbyte Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				return (sbyte) inStream.ReadByte();
@@ -158,7 +159,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( float ) );
 			}
 
-			public override float Deserialize( Stream inStream, long offset, long length )
+			public override float Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( float ) ];
@@ -175,7 +176,7 @@ namespace Aow2.Serialization.Internal.Builders
 				outStream.Write( buffer, 0, sizeof( double ) );
 			}
 
-			public override double Deserialize( Stream inStream, long offset, long length )
+			public override double Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
 			{
 				inStream.Position = offset;
 				byte[] buffer = new byte[ sizeof( double ) ];

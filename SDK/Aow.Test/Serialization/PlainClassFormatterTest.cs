@@ -5,6 +5,7 @@ using Aow2.Serialization.Internal.Builders;
 using Aow2.Test.Serialization.Mocks;
 using System.IO;
 using Aow.Test.Serialization.Resources;
+using Aow2.Serialization.Logging;
 
 namespace Aow2.Test.Serialization
 {
@@ -87,7 +88,7 @@ namespace Aow2.Test.Serialization
 
 			using ( MemoryStream memory = new MemoryStream( Files.PlainClass ) )
 			{
-				PlainClassMock deserialized = _plainClassFormatter.Deserialize( memory, 0L, 0L );
+				PlainClassMock deserialized = _plainClassFormatter.Deserialize( memory, 0L, 0L, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( expected, deserialized );
 			}
 		}
@@ -111,7 +112,7 @@ namespace Aow2.Test.Serialization
 
 			using ( MemoryStream memory = new MemoryStream( Files.PlainClassFalse ) )
 			{
-				PlainClassMock deserialized = _plainClassFormatter.Deserialize( memory, 0L, 0L );
+				PlainClassMock deserialized = _plainClassFormatter.Deserialize( memory, 0L, 0L, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( expected, deserialized );
 			}
 		}
@@ -149,7 +150,7 @@ namespace Aow2.Test.Serialization
 
 			using ( MemoryStream memory = new MemoryStream( Files.ClassWithAbstractField ) )
 			{
-				ClassWithAbstractField deserialized = _abstractFieldFormatter.Deserialize( memory, 0L, 0L );
+				ClassWithAbstractField deserialized = _abstractFieldFormatter.Deserialize( memory, 0L, 0L, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( expected, deserialized );
 			}
 		}

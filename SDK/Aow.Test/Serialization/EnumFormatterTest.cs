@@ -2,6 +2,7 @@
 using System.IO;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
+using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -34,7 +35,7 @@ namespace Aow2.Test.Serialization
 			byte[] bytes = BitConverter.GetBytes( (int) _value );
 			using ( MemoryStream stream = new MemoryStream( bytes ) )
 			{
-				EnumMock deserialized = _formatter.Deserialize( stream, 0, stream.Length );
+				EnumMock deserialized = _formatter.Deserialize( stream, 0, stream.Length, NoOpSerializationLogger.Instance );
 				Assert.AreEqual( _value, deserialized );
 			}
 		}

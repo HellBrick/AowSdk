@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Threading.Tasks;
 using Aow2.Serialization.Internal.Builders.Base;
 using Aow2.Serialization.Internal.Builders.Polymorph;
+using Aow2.Serialization.Logging;
 using Utils.Runtime;
 
 namespace Aow2.Serialization.Internal.Builders
@@ -37,7 +38,7 @@ namespace Aow2.Serialization.Internal.Builders
 		private static readonly MethodInfo _binaryReaderReadInt32 = Reflection.Method( ( BinaryReader r ) => r.ReadInt32() );
 		private static readonly MethodInfo _nodeFindSubclass = Reflection.Method( ( InheritanceNode n, int i ) => n.FindSubclass( i ) );
 		private static readonly PropertyInfo _nodeType = Reflection.Property( ( InheritanceNode n ) => n.Type );
-		private static readonly MethodInfo _deserialize = Reflection.Method( ( IFormatter f, Stream s, long l1, long l2 ) => f.Deserialize( s, l1, l2 ) );
+		private static readonly MethodInfo _deserialize = Reflection.Method( ( IFormatter f, Stream s, long l1, long l2, ISerializationLogger lgr ) => f.Deserialize( s, l1, l2, lgr ) );
 		private static readonly PropertyInfo _streamPosition = Reflection.Property( ( Stream s ) => s.Position );
 
 		private class Context: BuilderContext
@@ -156,7 +157,8 @@ namespace Aow2.Serialization.Internal.Builders
 							_deserialize,
 							DeserializeParams.Stream,
 							Expression.Property( DeserializeParams.Stream, _streamPosition ),
-							Expression.Subtract( DeserializeParams.Length, Expression.Constant( (long) sizeof( int ) ) ) ) ),
+							Expression.Subtract( DeserializeParams.Length, Expression.Constant( (long) sizeof( int ) ) ),
+							DeserializeParams.Logger ) ),
 
 					Expression.TypeAs( result, TargetType )
 					);

@@ -2,11 +2,11 @@
 
 namespace Aow2.Items
 {
-	[AowClass]
+	[AowClass( InvertHierarchyFieldOrder = true )]
 	public class ItemAbilityList : AowList<Ability>
 	{
 		[Field( 0x1e )]
-		public int u_enum_1e;
+		public int? u_enum_1e;
 	}
 
 	/*	enum values

@@ -11,14 +11,13 @@ namespace Aow2.Units
 	{
 		protected AbstractHero()
 		{
-			CastingSpellID = -1;
 			InventoryItems = new AowList<Item>();
 			EquippedItems = new AowList<Item>();
 		}
 
-		[Field( 0x1f )] protected ShortPascalString _name;
-		[Field( 0x20 )] protected ShortPascalString _title;
-		[Field( 0x2a )] protected ShortPascalString _libraryName;
+		[Field( 0x1f, Order = 1 )] protected ShortPascalString _name;
+		[Field( 0x20, Order = 1 )] protected ShortPascalString _title;
+		[Field( 0x2a, Order = 2 )] protected ShortPascalString _libraryName;
 
 		public string Name
 		{
@@ -40,29 +39,29 @@ namespace Aow2.Units
 
 		[Field( 0x21 )] public UnitGender Gender { get; set; }
 
-		[Field( 0x22 )] public byte BonusAttack { get; set; }
-		[Field( 0x23 )] public byte BonusDefense { get; set; }
-		[Field( 0x24 )] public byte BonusDamage { get; set; }
-		[Field( 0x25 )] public byte BonusHP { get; set; }
-		[Field( 0x26 )] public byte BonusMP { get; set; }
-		[Field( 0x27 )] public byte BonusResistance { get; set; }
+		[Field( 0x22 )] public byte? BonusAttack { get; set; }
+		[Field( 0x23 )] public byte? BonusDefense { get; set; }
+		[Field( 0x24 )] public byte? BonusDamage { get; set; }
+		[Field( 0x25 )] public byte? BonusHP { get; set; }
+		[Field( 0x26 )] public byte? BonusMP { get; set; }
+		[Field( 0x27 )] public byte? BonusResistance { get; set; }
 		
-		[Field( 0x31 )] public int CurrentCastingPoints { get; set; }
-		[Field( 0x28 )] public int CastingSpellID { get; set; }
-		[Field( 0x2d )] public int CastingProgress { get; set; }
-		[Field( 0x2e )] public int CastingPrice { get; set; }
+		[Field( 0x31, Order = 2 )] public int? CurrentCastingPoints { get; set; }
+		[Field( 0x28 )] public int? CastingSpellID { get; set; }
+		[Field( 0x2d, Order = 2 )] public int? CastingProgress { get; set; }
+		[Field( 0x2e, Order = 2 )] public int? CastingPrice { get; set; }
 
-		[Field( 0x2f )] public AowList<Item> InventoryItems { get; set; }
-		[Field( 0x30 )] public AowList<Item> EquippedItems { get; set; }
-		[Field( 0x32 )] public UnknownData Image { get; set; }
+		[Field( 0x2f, Order = 2 )] public AowList<Item> InventoryItems { get; set; }
+		[Field( 0x30, Order = 2 )] public AowList<Item> EquippedItems { get; set; }
+		[Field( 0x32, Order = 2 )] public UnknownData Image { get; set; }
 
-		[Field( 0x2c )] public AowList<Spell> _UnknownData2c;
-		[Field( 0x1e )] public int _int1e;		
-		[Field( 0x29 )] public int _int29 = -1;		
-		[Field( 0x2b )] public int _int2b;
+		[Field( 0x2c, Order = 2 )] public AowList<Spell> _UnknownData2c;
+		[Field( 0x1e )] public int? _int1e;
+		[Field( 0x29 )] public int? _int29;
+		[Field( 0x2b, Order = 2 )] public int? _int2b;
 		
-		[Field( 0x33 )] public sbyte _byte33 = -1;
-		[Field( 0x34 )] public int _int34 = -1;
+		[Field( 0x33, Order = 2 )] public sbyte? _byte33;
+		[Field( 0x34, Order = 2 )] public int? _int34;
 
 		public override string ToString() => Name;
 	}
