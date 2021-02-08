@@ -89,8 +89,13 @@ namespace Aow2.Maps
 		}
 
 		[Field( 0x50 )]
-		[Field( 0x58 )]
 		public AdvancedSettings AdvancedSettings { get; set; }
+
+		/// <remarks>
+		/// Apparently, these can be different from <see cref="AdvancedSettings"/>.
+		/// </remarks>
+		[Field( 0x58 )]
+		public AdvancedSettings AdvancedSettings2 { get; set; }
 
 		[Field( 0x59 )] public UserCampaignSettings UserCampaignSettings { get; set; }
 
