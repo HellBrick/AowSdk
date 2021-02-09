@@ -12,7 +12,7 @@ namespace Aow2.Maps.Events.Actions
 		}
 
 		[Field( 0x32 )] public RandomUnitIDList Units { get; private set; }
-		[Field( 0x33 )] public int Price { get; set; }
+		[Field( 0x33 )] public int? Price { get; set; }
 		[Field( 0x34 )] public EventXYL Location { get; set; }
 
 		[Field( 0x35 )] private LongPascalString message;

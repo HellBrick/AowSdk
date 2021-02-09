@@ -5,7 +5,7 @@ namespace Aow2.Maps.Events.Actions
 	[AowClass]
 	public class EventPlayerList
 	{
-		[Field( 0x1e )] public PlayerBitSet Players { get; set; }
+		[Field( 0x1e )] public PlayerBitSet? Players { get; set; }
 		[Field( 0x1f )] public bool UseTriggerPlayer { get; set; }
 		[Field( 0x20 )] public bool Independents { get; set; }
 
@@ -15,9 +15,9 @@ namespace Aow2.Maps.Events.Actions
 				return "<trigger player>";
 
 			if ( !Independents )
-				return Players.ToString();
+				return ( Players ?? PlayerBitSet.None ).ToString();
 
-			return Players.ToString() + " | Independents";
+			return ( Players ?? PlayerBitSet.None ).ToString() + " | Independents";
 		}
 	}
 

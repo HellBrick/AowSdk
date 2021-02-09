@@ -8,8 +8,8 @@ namespace Aow2.Maps.Events.Actions
 	[AowClass( ID = 0x01100b06 )]
 	public class HeroJoinEvent : PlayerEvent
 	{
-		[Field( 0x32 )] public int HeroID { get; set; }
-		[Field( 0x34 )] public int Price { get; set; }
+		[Field( 0x32 )] public int? HeroID { get; set; }
+		[Field( 0x34 )] public int? Price { get; set; }
 		[Field( 0x35 )] public EventXYL Location { get; set; }
 
 		[Field( 0x33 )] public RandomUnitIDList Companions { get; set; }
