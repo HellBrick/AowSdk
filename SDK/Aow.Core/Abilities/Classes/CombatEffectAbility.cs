@@ -3,6 +3,7 @@
 	[AowClass( ID = 0x1100136 )]
 	public class CombatEffectAbility : Ability
 	{
+		[Field( 0x1e )] public UnknownData u_1e;
 	}
 
 	[AowClass( ID = 0x01110030 )]

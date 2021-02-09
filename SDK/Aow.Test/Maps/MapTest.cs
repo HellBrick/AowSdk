@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using Aow.Test.Maps.Resources;
 using Aow2.Maps;
 using Aow2.Maps.Internal;
@@ -7,29 +9,31 @@ using Aow2.Serialization;
 using Aow2.Serialization.Logging;
 using FluentAssertions;
 using FluentAssertions.Equivalency;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Maps
 {
-	[TestClass]
+	[TestFixture]
 	public class MapTest
 	{
-		[TestMethod]
-		public void SaveRoundTrips()
+		[Test]
+		[TestCaseSource( nameof( EnumerateMapCases ), new object[] { "Structure" } )]
+		public void SaveRoundTrips( byte[] saveBytes )
 		{
-			AowMap original = AowMap.FromBytes( MapFiles.Save );
+			AowMap original = AowMap.FromBytes( saveBytes );
 			AowMap roundTripped = AowMap.FromBytes( original.ToBytes() );
 
 			roundTripped.Should().BeEquivalentTo( original );
 		}
 
-		[TestMethod]
-		public void SaveDataSectionRoundTrips()
+		[Test]
+		[TestCaseSource( nameof( EnumerateMapCases ), new object[] { "Binary" } )]
+		public void SaveDataSectionRoundTrips( byte[] saveBytes )
 		{
-			MemoryStream compressedSaveStream = new MemoryStream( MapFiles.Save );
+			MemoryStream compressedSaveStream = new MemoryStream( saveBytes );
 			byte[] originalDataBytes = MapFormatHelper.ReadPreHeaderAndDecompressDataStream( compressedSaveStream ).dataStream.ToArray();
 
-			AowMap deserializedMap = AowMap.FromBytes( MapFiles.Save );
+			AowMap deserializedMap = AowMap.FromBytes( saveBytes );
 			MemoryStream roundTrippedDataStream = new MemoryStream();
 			AowSerializer<AowMap> mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
 			mapSerializer.Serialize( roundTrippedDataStream, deserializedMap );
@@ -59,6 +63,13 @@ namespace Aow2.Test.Maps
 				throw;
 			}
 		}
+
+		private static IEnumerable<TestCaseData> EnumerateMapCases(string kind)
+			=> MapFiles
+			.ResourceManager
+			.GetResourceSet( CultureInfo.CurrentUICulture, createIfNotExists: true, tryParents: true )
+			.Cast<System.Collections.DictionaryEntry>()
+			.Select( e => new TestCaseData( (byte[]) e.Value ).SetName( $"{e.Key}.{kind}" ) );
 
 		private class MapStructureLogger : ISerializationLogger
 		{

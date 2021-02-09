@@ -3,11 +3,11 @@ using Aow.Test.Serialization.Resources;
 using Aow2.Serialization.Internal.Builders.OffsetMap;
 using Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders;
 using Aow2.Test.Serialization.Mocks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class ListClassContextTest: OffsetMapContextTest<ListClassMock>
 	{
 		internal override IEnumerable<IFieldProvider> Providers

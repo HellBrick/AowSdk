@@ -79,7 +79,7 @@ namespace Aow2.Maps
 		[Field( 0x3b )] public ShortPascalString CryptedPassword { get; set; }
 		[Field( 0x4a )] public ShortPascalString Authors { get; set; }
 		[Field( 0x51 )] public bool LockEditing { get; set; }
-		[Field( 0x17 )] public byte CurrentPlayerNumber { get; set; }
+		[Field( 0x17 )] public byte? CurrentPlayerNumber { get; set; }
 		[Field( 0x37 )] public GameType SaveType { get; set; }
 
 		public string Password
@@ -118,7 +118,7 @@ namespace Aow2.Maps
 		[Field( 0x12 )] public IntegerList u_12;
 		[Field( 0x14 )] public int u_14;
 
-		[Field( 0x18 )] public int u_18;
+		[Field( 0x18 )] public int? u_18;
 		[Field( 0x19 )] public ShortPascalString u_19;
 
 		[Field( 0x1d )] public byte u_enum_1d;
@@ -130,7 +130,7 @@ namespace Aow2.Maps
 
 		[Field( 0x24 )] public byte u_enum_24;
 		[Field( 0x25 )] public byte u_enum_25;
-		[Field( 0x26 )] public int u_26;
+		[Field( 0x26 )] public int? u_26;
 		[Field( 0x27 )] public byte u_enum_27;
 
 

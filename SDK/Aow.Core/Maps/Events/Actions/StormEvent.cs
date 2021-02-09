@@ -5,7 +5,7 @@
 	{
 		[Field( 0x32 )] public EventXYL Location { get; set; }
 		[Field( 0x34 )] public StormType Type { get; set; }
-		[Field( 0x35 )] public int Radius { get; set; }
+		[Field( 0x35 )] public int? Radius { get; set; }
 	}
 
 	public enum StormType : byte

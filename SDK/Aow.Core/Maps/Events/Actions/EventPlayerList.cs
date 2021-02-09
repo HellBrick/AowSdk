@@ -5,19 +5,19 @@ namespace Aow2.Maps.Events.Actions
 	[AowClass]
 	public class EventPlayerList
 	{
-		[Field( 0x1e )] public PlayerBitSet Players { get; set; }
-		[Field( 0x1f )] public bool UseTriggerPlayer { get; set; }
+		[Field( 0x1e )] public PlayerBitSet? Players { get; set; }
+		[Field( 0x1f )] public PersistentBool? UseTriggerPlayer { get; set; }
 		[Field( 0x20 )] public bool Independents { get; set; }
 
 		public override string ToString()
 		{
-			if ( UseTriggerPlayer )
+			if ( UseTriggerPlayer == true )
 				return "<trigger player>";
 
 			if ( !Independents )
-				return Players.ToString();
+				return ( Players ?? PlayerBitSet.None ).ToString();
 
-			return Players.ToString() + " | Independents";
+			return ( Players ?? PlayerBitSet.None ).ToString() + " | Independents";
 		}
 	}
 

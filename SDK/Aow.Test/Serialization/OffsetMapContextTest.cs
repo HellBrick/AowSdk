@@ -4,11 +4,11 @@ using System.IO;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders.OffsetMap;
 using Aow2.Serialization.Logging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public abstract class OffsetMapContextTest<T>
 	{
 		#region Common
@@ -17,7 +17,7 @@ namespace Aow2.Test.Serialization
 		private OffsetMapBuilderContext _context;
 		private Formatter<T> _formatter;
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			_type = typeof( T );
@@ -32,7 +32,7 @@ namespace Aow2.Test.Serialization
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void Read()
 		{
 			using ( MemoryStream stream = new MemoryStream( TestBytes ) )
@@ -42,7 +42,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void Write()
 		{
 			using ( MemoryStream stream = new MemoryStream() )

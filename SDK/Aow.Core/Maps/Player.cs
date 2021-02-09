@@ -84,7 +84,7 @@ namespace Aow2.Maps
 		[Field( 0x1c )] public byte? u_1c;
 		[Field( 0x20 )] public IntegerList u_20;
 		[Field( 0x21 )] public IntegerList u_21;
-		[Field( 0x22 )] public int u_22;
+		[Field( 0x22 )] public int? u_22;
 		[Field( 0x24 )] public int? u_24;
 		[Field( 0x25 )] public int? u_25;
 		[Field( 0x26 )] public int? u_26;

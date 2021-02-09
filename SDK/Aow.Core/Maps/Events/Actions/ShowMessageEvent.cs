@@ -26,7 +26,7 @@ namespace Aow2.Maps.Events.Actions
 			set => header = value;
 		}
 
-		[Field( 0x34 )] public int ImageIndex { get; set; }
-		[Field( 0x35 )] public EventSpirit Spirit { get; set; }
+		[Field( 0x34 )] public int? ImageIndex { get; set; }
+		[Field( 0x35 )] public EventSpirit? Spirit { get; set; }
 	}
 }

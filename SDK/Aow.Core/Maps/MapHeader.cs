@@ -24,7 +24,7 @@ namespace Aow2.Maps
 		}
 
 		[Field( 0x1e )] public byte PlayersCount { get; set; }
-		[Field( 0x21 )] public int Day { get; set; }
+		[Field( 0x21 )] public int? Day { get; set; }
 		[Field( 0x22 )] public GameType GameType { get; set; }
 
 		public MapLayerID LastLayer
