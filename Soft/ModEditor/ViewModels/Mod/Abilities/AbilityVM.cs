@@ -18,7 +18,7 @@ namespace ModEditor.ViewModels.Mod.Abilities
 
 		public int Level
 		{
-			get => Model.Level;
+			get => Model.Level ?? 0;
 			set { Model.Level = ClamLevel( value ); RaisePropertyChanged( () => Level ); RaisePropertyChanged( () => Text ); }
 		}
 
