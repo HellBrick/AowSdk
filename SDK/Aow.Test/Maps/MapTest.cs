@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using Aow.Test.Maps.Resources;
 using Aow2.Maps;
 using Aow2.Maps.Internal;
@@ -15,21 +17,23 @@ namespace Aow2.Test.Maps
 	public class MapTest
 	{
 		[Test]
-		public void SaveRoundTrips()
+		[TestCaseSource( nameof( EnumerateMapCases ), new object[] { "Structure" } )]
+		public void SaveRoundTrips( byte[] saveBytes )
 		{
-			AowMap original = AowMap.FromBytes( MapFiles.SimpleSave );
+			AowMap original = AowMap.FromBytes( saveBytes );
 			AowMap roundTripped = AowMap.FromBytes( original.ToBytes() );
 
 			roundTripped.Should().BeEquivalentTo( original );
 		}
 
 		[Test]
-		public void SaveDataSectionRoundTrips()
+		[TestCaseSource( nameof( EnumerateMapCases ), new object[] { "Binary" } )]
+		public void SaveDataSectionRoundTrips( byte[] saveBytes )
 		{
-			MemoryStream compressedSaveStream = new MemoryStream( MapFiles.SimpleSave );
+			MemoryStream compressedSaveStream = new MemoryStream( saveBytes );
 			byte[] originalDataBytes = MapFormatHelper.ReadPreHeaderAndDecompressDataStream( compressedSaveStream ).dataStream.ToArray();
 
-			AowMap deserializedMap = AowMap.FromBytes( MapFiles.SimpleSave );
+			AowMap deserializedMap = AowMap.FromBytes( saveBytes );
 			MemoryStream roundTrippedDataStream = new MemoryStream();
 			AowSerializer<AowMap> mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
 			mapSerializer.Serialize( roundTrippedDataStream, deserializedMap );
@@ -59,6 +63,13 @@ namespace Aow2.Test.Maps
 				throw;
 			}
 		}
+
+		private static IEnumerable<TestCaseData> EnumerateMapCases(string kind)
+			=> MapFiles
+			.ResourceManager
+			.GetResourceSet( CultureInfo.CurrentUICulture, createIfNotExists: true, tryParents: true )
+			.Cast<System.Collections.DictionaryEntry>()
+			.Select( e => new TestCaseData( (byte[]) e.Value ).SetName( $"{e.Key}.{kind}" ) );
 
 		private class MapStructureLogger : ISerializationLogger
 		{
