@@ -17,7 +17,7 @@ namespace Aow2.Test.Maps
 		[TestMethod]
 		public void SaveRoundTrips()
 		{
-			AowMap original = AowMap.FromBytes( MapFiles.Save );
+			AowMap original = AowMap.FromBytes( MapFiles.SimpleSave );
 			AowMap roundTripped = AowMap.FromBytes( original.ToBytes() );
 
 			roundTripped.Should().BeEquivalentTo( original );
@@ -26,10 +26,10 @@ namespace Aow2.Test.Maps
 		[TestMethod]
 		public void SaveDataSectionRoundTrips()
 		{
-			MemoryStream compressedSaveStream = new MemoryStream( MapFiles.Save );
+			MemoryStream compressedSaveStream = new MemoryStream( MapFiles.SimpleSave );
 			byte[] originalDataBytes = MapFormatHelper.ReadPreHeaderAndDecompressDataStream( compressedSaveStream ).dataStream.ToArray();
 
-			AowMap deserializedMap = AowMap.FromBytes( MapFiles.Save );
+			AowMap deserializedMap = AowMap.FromBytes( MapFiles.SimpleSave );
 			MemoryStream roundTrippedDataStream = new MemoryStream();
 			AowSerializer<AowMap> mapSerializer = new AowSerializer<AowMap>( hasRootWrapper: true );
 			mapSerializer.Serialize( roundTrippedDataStream, deserializedMap );
