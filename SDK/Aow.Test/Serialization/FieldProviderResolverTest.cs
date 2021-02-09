@@ -4,14 +4,14 @@ using System.Linq;
 using Aow2.Serialization.Internal.Builders.OffsetMap;
 using Aow2.Serialization.Internal.Builders.OffsetMap.FieldProviders;
 using Aow2.Test.Serialization.Mocks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class FieldProviderResolverTest
 	{
-		[TestMethod]
+		[Test]
 		public void Class()
 		{
 			List<Type> expectedProviderTypes = new List<Type>() { typeof( ClassFieldProvider ) };
@@ -24,7 +24,7 @@ namespace Aow2.Test.Serialization
 			CollectionAssert.AreEqual( expectedProviderTypes, providerTypes );
 		}
 
-		[TestMethod]
+		[Test]
 		public void List()
 		{
 			List<Type> expectedProviderTypes = new List<Type>() { typeof( ListFieldProvider ) };
@@ -37,7 +37,7 @@ namespace Aow2.Test.Serialization
 			CollectionAssert.AreEqual( expectedProviderTypes, providerTypes );
 		}
 
-		[TestMethod]
+		[Test]
 		public void Dictionary()
 		{
 			List<Type> expectedProviderTypes = new List<Type>() { typeof( DictionaryFieldProvider ) };
@@ -50,7 +50,7 @@ namespace Aow2.Test.Serialization
 			CollectionAssert.AreEqual( expectedProviderTypes, providerTypes );
 		}
 
-		[TestMethod]
+		[Test]
 		public void ClassList()
 		{
 			List<Type> expectedProviderTypes = new List<Type>() { typeof( ClassFieldProvider ), typeof( ListFieldProvider ) };
@@ -63,7 +63,7 @@ namespace Aow2.Test.Serialization
 			CollectionAssert.AreEqual( expectedProviderTypes, providerTypes );
 		}
 
-		[TestMethod]
+		[Test]
 		public void ClassDictionary()
 		{
 			List<Type> expectedProviderTypes = new List<Type>() { typeof( ClassFieldProvider ), typeof( DictionaryFieldProvider ) };

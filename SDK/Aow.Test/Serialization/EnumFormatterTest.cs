@@ -4,11 +4,11 @@ using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
 using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class EnumFormatterTest
 	{
 		#region Common
@@ -17,8 +17,8 @@ namespace Aow2.Test.Serialization
 		private static Formatter<EnumMock> _formatter;
 		private static EnumMock _value = EnumMock.Death;
 
-		[ClassInitialize]
-		public static void ClassInitialize( TestContext context )
+		[OneTimeSetUp]
+		public static void ClassInitialize()
 		{
 			_builder = new EnumFormatterBuilder();
 			_formatter = _builder.Create( typeof( EnumMock ) ) as Formatter<EnumMock>;
@@ -26,10 +26,10 @@ namespace Aow2.Test.Serialization
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void CanBuild() => Assert.IsTrue( _builder.CanCreate( new FormatterRequest( typeof( EnumMock ), false ) ) );
 
-		[TestMethod]
+		[Test]
 		public void Read()
 		{
 			byte[] bytes = BitConverter.GetBytes( (int) _value );
@@ -40,7 +40,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void Write()
 		{
 			byte[] bytes = BitConverter.GetBytes( (int) _value );

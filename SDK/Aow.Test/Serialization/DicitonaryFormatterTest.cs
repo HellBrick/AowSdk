@@ -5,11 +5,11 @@ using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
 using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class DicitonaryFormatterTest
 	{
 		#region Common
@@ -29,7 +29,7 @@ namespace Aow2.Test.Serialization
 			{ 0x24, new DerivedListItemMock() { AA = 0x43, BB = 0x65 } }
 		};
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			_builder = new OffsetMapFormatterBuilder();
@@ -38,7 +38,7 @@ namespace Aow2.Test.Serialization
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void CanCreate()
 		{
 			Type type = typeof( DictionaryMock );
@@ -46,7 +46,7 @@ namespace Aow2.Test.Serialization
 			Assert.IsTrue( _builder.CanCreate( request ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void CanNotCreateIfSuppressed()
 		{
 			Type type = typeof( SuppressedDictionaryMock );
@@ -54,7 +54,7 @@ namespace Aow2.Test.Serialization
 			Assert.IsFalse( _builder.CanCreate( request ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void CanNotCreateIfPolymorph()
 		{
 			Type type = typeof( DictionaryMock );
@@ -62,7 +62,7 @@ namespace Aow2.Test.Serialization
 			Assert.IsFalse( _builder.CanCreate( request ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void SimpleRead()
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.Dictionary ) )
@@ -72,7 +72,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void SimpleWrite()
 		{
 			using ( MemoryStream stream = new MemoryStream() )
@@ -83,7 +83,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void PolymorphRead()
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.PolymorphDictionary ) )
@@ -93,7 +93,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void PolymorphWrite()
 		{
 			using ( MemoryStream stream = new MemoryStream() )

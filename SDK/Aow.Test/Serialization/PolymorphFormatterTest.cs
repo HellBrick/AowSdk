@@ -4,11 +4,11 @@ using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
 using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class PolymorphFormatterTest
 	{
 		#region Common
@@ -18,12 +18,12 @@ namespace Aow2.Test.Serialization
 
 		private DerivedOne _derivedOne = new DerivedOne() { A0 = 0x42, B0 = 0x53 };
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize() => _formatter = _builder.Create( typeof( AbstractMock ) ) as Formatter<AbstractMock>;
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void Write()
 		{
 			using ( MemoryStream memory = new MemoryStream() )
@@ -33,7 +33,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void Read()
 		{
 			using ( MemoryStream memory = new MemoryStream( Files.DerivedOne ) )

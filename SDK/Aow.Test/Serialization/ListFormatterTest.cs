@@ -6,11 +6,11 @@ using Aow2.Serialization.Internal.Builders;
 using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class ListFormatterTest
 	{
 		#region Common
@@ -26,7 +26,7 @@ namespace Aow2.Test.Serialization
 			new ListItemMock() { AA = 0x42 },
 			new DerivedListItemMock() { AA = 0x43, BB = 0x65 } );
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			_builder = new OffsetMapFormatterBuilder();
@@ -35,7 +35,7 @@ namespace Aow2.Test.Serialization
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void CanCreate()
 		{
 			Type type = typeof( ListMock );
@@ -43,7 +43,7 @@ namespace Aow2.Test.Serialization
 			Assert.IsTrue( _builder.CanCreate( request ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void CanNotCreateIfSuppressed()
 		{
 			Type type = typeof( SuppressedListMock );
@@ -51,7 +51,7 @@ namespace Aow2.Test.Serialization
 			Assert.IsFalse( _builder.CanCreate( request ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void CanNotCreateIfPolymorph()
 		{
 			Type type = typeof( ListMock );
@@ -59,7 +59,7 @@ namespace Aow2.Test.Serialization
 			Assert.IsFalse( _builder.CanCreate( request ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void SimpleRead()
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.ListItem ) )
@@ -69,7 +69,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void SimpleWrite()
 		{
 			using ( MemoryStream stream = new MemoryStream() )
@@ -80,7 +80,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void PolymorphRead()
 		{
 			using ( MemoryStream stream = new MemoryStream( Files.PolymorphListItem ) )
@@ -90,7 +90,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void PolymorphWrite()
 		{
 			using ( MemoryStream stream = new MemoryStream() )
@@ -101,7 +101,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void ListWithLeadingNullsRoundTrips()
 		{
 			ListMock original = new ListMock( null, null, null, new ListItemMock() { AA = 0x42 } );

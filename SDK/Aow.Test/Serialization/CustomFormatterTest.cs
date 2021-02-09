@@ -5,11 +5,11 @@ using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
 using Aow2.Serialization.Logging;
 using Aow2.Test.Serialization.Mocks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class CustomFormatterTest
 	{
 		#region Common
@@ -18,8 +18,8 @@ namespace Aow2.Test.Serialization
 		private static Formatter<CustomFormatterMock> _formatter;
 		private static CustomFormatterMock _value = new CustomFormatterMock() { Value = "Fourty-two" };
 
-		[ClassInitialize]
-		public static void ClassInitialize( TestContext context )
+		[OneTimeSetUp]
+		public static void ClassInitialize()
 		{
 			_builder = new CustomFormatterBuilder();
 			_formatter = _builder.Create( typeof( CustomFormatterMock ) ) as Formatter<CustomFormatterMock>;
@@ -27,10 +27,10 @@ namespace Aow2.Test.Serialization
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void CanBuild() => Assert.IsTrue( _builder.CanCreate( new FormatterRequest( typeof( CustomFormatterMock ), isPolymorph: false ) ) );
 
-		[TestMethod]
+		[Test]
 		public void Read()
 		{
 			byte[] bytes = Encoding.ASCII.GetBytes( _value.Value );
@@ -41,7 +41,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void Write()
 		{
 			byte[] bytes = Encoding.ASCII.GetBytes( _value.Value );
@@ -54,14 +54,14 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void ShouldSkip()
 		{
 			CustomFormatterMock skipped = new CustomFormatterMock() { Value = String.Empty };
 			Assert.IsTrue( _formatter.ShouldSkipField( skipped ) );
 		}
 
-		[TestMethod]
+		[Test]
 		public void ShouldSkipStruct()
 		{
 			Formatter<CustomFormattedStruct> formatter = _builder.Create( typeof( CustomFormattedStruct ) ) as Formatter<CustomFormattedStruct>;

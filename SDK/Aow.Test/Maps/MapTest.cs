@@ -7,14 +7,14 @@ using Aow2.Serialization;
 using Aow2.Serialization.Logging;
 using FluentAssertions;
 using FluentAssertions.Equivalency;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Aow2.Test.Maps
 {
-	[TestClass]
+	[TestFixture]
 	public class MapTest
 	{
-		[TestMethod]
+		[Test]
 		public void SaveRoundTrips()
 		{
 			AowMap original = AowMap.FromBytes( MapFiles.SimpleSave );
@@ -23,7 +23,7 @@ namespace Aow2.Test.Maps
 			roundTripped.Should().BeEquivalentTo( original );
 		}
 
-		[TestMethod]
+		[Test]
 		public void SaveDataSectionRoundTrips()
 		{
 			MemoryStream compressedSaveStream = new MemoryStream( MapFiles.SimpleSave );

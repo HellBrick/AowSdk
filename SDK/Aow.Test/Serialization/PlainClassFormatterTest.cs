@@ -1,15 +1,15 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aow2.Serialization.Internal;
 using Aow2.Serialization.Internal.Builders;
 using Aow2.Test.Serialization.Mocks;
 using System.IO;
 using Aow.Test.Serialization.Resources;
 using Aow2.Serialization.Logging;
+using NUnit.Framework;
 
 namespace Aow2.Test.Serialization
 {
-	[TestClass]
+	[TestFixture]
 	public class PlainClassFormatterTest
 	{
 		#region Common
@@ -50,8 +50,8 @@ namespace Aow2.Test.Serialization
 			}
 		};
 
-		[ClassInitialize]
-		public static void ClassInitialize( TestContext context )
+		[OneTimeSetUp]
+		public static void ClassInitialize()
 		{
 			_builder = new OffsetMapFormatterBuilder();
 			_plainClassFormatter = _builder.Create( typeof( PlainClassMock ) ) as Formatter<PlainClassMock>;
@@ -61,7 +61,7 @@ namespace Aow2.Test.Serialization
 
 		#endregion
 
-		[TestMethod]
+		[Test]
 		public void CircularTypeReference()
 		{
 			try
@@ -74,14 +74,14 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void CanCreate()
 		{
 			bool canCreate = _builder.CanCreate( new FormatterRequest( typeof( PlainClassMock ), isPolymorph : false ) );
 			Assert.IsTrue( canCreate, "Builder failed to recognize class." );
 		}
 
-		[TestMethod]
+		[Test]
 		public void Read()
 		{
 			PlainClassMock expected = _trueObject;
@@ -93,7 +93,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void Write()
 		{
 			byte[] expected = Files.PlainClass;
@@ -105,7 +105,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void ReadWithFieldSkipped()
 		{
 			PlainClassMock expected = _falseObject;
@@ -117,7 +117,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void WriteWithFieldSkipped()
 		{
 			byte[] expected = Files.PlainClassFalse;
@@ -129,10 +129,10 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void NullIsSkipped() => Assert.IsTrue( _plainClassFormatter.ShouldSkipField( null ) );
 
-		[TestMethod]
+		[Test]
 		public void ImportOnlyIsSkippedWhenWriting()
 		{
 			byte[] expected = Files.ImportOnlyClass;
@@ -143,7 +143,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void AbstractFieldRead()
 		{
 			ClassWithAbstractField expected = _abstractFieldValue;
@@ -155,7 +155,7 @@ namespace Aow2.Test.Serialization
 			}
 		}
 
-		[TestMethod]
+		[Test]
 		public void AbstractFieldWrite()
 		{
 			byte[] expected = Files.ClassWithAbstractField;
