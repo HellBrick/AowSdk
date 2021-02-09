@@ -6,12 +6,12 @@ namespace Aow2.Maps.Events.Actions
 	public class EventPlayerList
 	{
 		[Field( 0x1e )] public PlayerBitSet? Players { get; set; }
-		[Field( 0x1f )] public bool UseTriggerPlayer { get; set; }
+		[Field( 0x1f )] public PersistentBool? UseTriggerPlayer { get; set; }
 		[Field( 0x20 )] public bool Independents { get; set; }
 
 		public override string ToString()
 		{
-			if ( UseTriggerPlayer )
+			if ( UseTriggerPlayer == true )
 				return "<trigger player>";
 
 			if ( !Independents )
