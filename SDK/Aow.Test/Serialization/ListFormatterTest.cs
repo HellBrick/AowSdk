@@ -19,12 +19,12 @@ namespace Aow2.Test.Serialization
 		private Formatter<ListMock> _formatter;
 
 		private ListMock _simpleList = new ListMock(
-			new ListItemMock() { AA = 0x42 },
-			new ListItemMock() { AA = 0x43 } );
+			new ListItemMock() { I33 = 0x42 },
+			new ListItemMock() { I33 = 0x43 } );
 
 		private ListMock _polymorphList = new ListMock(
-			new ListItemMock() { AA = 0x42 },
-			new DerivedListItemMock() { AA = 0x43, BB = 0x65 } );
+			new ListItemMock() { I33 = 0x42 },
+			new DerivedListItemMock() { I33 = 0x43, I44 = 0x65 } );
 
 		[SetUp]
 		public void Initialize()
@@ -104,7 +104,7 @@ namespace Aow2.Test.Serialization
 		[Test]
 		public void ListWithLeadingNullsRoundTrips()
 		{
-			ListMock original = new ListMock( null, null, null, new ListItemMock() { AA = 0x42 } );
+			ListMock original = new ListMock( null, null, null, new ListItemMock() { I33 = 0x42 } );
 
 			using ( MemoryStream stream = new MemoryStream() )
 			{

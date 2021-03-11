@@ -19,14 +19,14 @@ namespace Aow2.Test.Serialization
 
 		private DictionaryMock _simpleList = new DictionaryMock()
 		{
-			{ 0x21, new ListItemMock() { AA = 0x42 } },
-			{ 0x24, new ListItemMock() { AA = 0x43 } }
+			{ 0x21, new ListItemMock() { I33 = 0x42 } },
+			{ 0x24, new ListItemMock() { I33 = 0x43 } }
 		};
 
 		private DictionaryMock _polymorphList = new DictionaryMock()
 		{
-			{ 0x21, new ListItemMock() { AA = 0x42 } },
-			{ 0x24, new DerivedListItemMock() { AA = 0x43, BB = 0x65 } }
+			{ 0x21, new ListItemMock() { I33 = 0x42 } },
+			{ 0x24, new DerivedListItemMock() { I33 = 0x43, I44 = 0x65 } }
 		};
 
 		[SetUp]

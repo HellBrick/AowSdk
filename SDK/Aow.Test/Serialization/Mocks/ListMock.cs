@@ -62,18 +62,18 @@ namespace Aow2.Test.Serialization.Mocks
 	[AowClass( ID = 0x12345678 )]
 	class ListItemMock: IEquatable<ListItemMock>
 	{
-		[Field( 0xAA )]
-		public int AA { get; set; }
+		[Field( 0x33 )]
+		public int I33 { get; set; }
 
 		#region IEquatable<ListItemMock> Members
 
 		public bool Equals( ListItemMock other ) => other != null &&
 				GetType() == other.GetType() &&
-				AA == other.AA;
+				I33 == other.I33;
 
 		public override bool Equals( object obj ) => Equals( obj as ListItemMock );
 
-		public override int GetHashCode() => AA.GetHashCode();
+		public override int GetHashCode() => I33.GetHashCode();
 
 		#endregion
 	}
@@ -81,19 +81,19 @@ namespace Aow2.Test.Serialization.Mocks
 	[AowClass( ID = 0x77777777 )]
 	class DerivedListItemMock: ListItemMock, IEquatable<DerivedListItemMock>
 	{
-		[Field( 0xBB )]
-		public int BB { get; set; }
+		[Field( 0x44 )]
+		public int I44 { get; set; }
 
 		#region IEquatable<DerivedListItemMock> Members
 
 		public bool Equals( DerivedListItemMock other ) => other != null &&
 				GetType() == other.GetType() &&
-				AA == other.AA &&
-				BB == other.BB;
+				I33 == other.I33 &&
+				I44 == other.I44;
 
 		public override bool Equals( object obj ) => Equals( obj as DerivedListItemMock );
 
-		public override int GetHashCode() => base.GetHashCode() * 23 + BB.GetHashCode();
+		public override int GetHashCode() => base.GetHashCode() * 23 + I44.GetHashCode();
 
 		#endregion
 	}
