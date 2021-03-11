@@ -92,6 +92,8 @@ namespace Aow2.Test.Maps
 				_currentNode.Data = buffer;
 			}
 
+			public void LogClassId( int classId ) => _currentNode.Header += $"/[{classId:x8}]";
+
 			public void LogFieldStart( int fieldId )
 			{
 				Node fieldNode = new Node( _currentNode, $"{_currentNode.Header}/{fieldId:x2}" );
@@ -110,7 +112,7 @@ namespace Aow2.Test.Maps
 				}
 
 				public Node Parent { get; }
-				public string Header { get; }
+				public string Header { get; set; }
 
 				public List<Node> Children { get; } = new List<Node>();
 				public byte[] Data { get; set; }
