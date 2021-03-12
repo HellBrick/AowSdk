@@ -77,7 +77,7 @@ namespace Aow2.Serialization.Internal
 
 				foreach ( FieldLengthInfo node in nodes )
 				{
-					if ( offset <= 0xff && node.ID <= 0xff )
+					if ( offset <= 0xff && node.ID <= 0x7f )
 					{
 						writer.Write( (byte) node.ID );
 						writer.Write( (byte) offset );

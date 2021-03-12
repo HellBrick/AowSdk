@@ -44,9 +44,9 @@ namespace Aow2.Test.Serialization
 		{
 			Field = new DerivedTwo()
 			{
-				A0 = 0x42,
-				B0 = 0x53,
-				C0 = 0x64
+				I30 = 0x42,
+				I40 = 0x53,
+				I50 = 0x64
 			}
 		};
 

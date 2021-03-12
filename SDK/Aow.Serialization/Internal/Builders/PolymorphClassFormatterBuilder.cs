@@ -40,6 +40,7 @@ namespace Aow2.Serialization.Internal.Builders
 		private static readonly PropertyInfo _nodeType = Reflection.Property( ( InheritanceNode n ) => n.Type );
 		private static readonly MethodInfo _deserialize = Reflection.Method( ( IFormatter f, Stream s, long l1, long l2, ISerializationLogger lgr ) => f.Deserialize( s, l1, l2, lgr ) );
 		private static readonly PropertyInfo _streamPosition = Reflection.Property( ( Stream s ) => s.Position );
+		private static readonly MethodInfo _logClassId = Reflection.Method( ( ISerializationLogger l, int id ) => l.LogClassId( id ) );
 
 		private class Context: BuilderContext
 		{
@@ -125,6 +126,8 @@ namespace Aow2.Serialization.Internal.Builders
 					Expression.Assign(
 						classID,
 						Expression.Call( Expression.New( _newBinaryReader, DeserializeParams.Stream ), _binaryReaderReadInt32 ) ),
+
+					Expression.Call( DeserializeParams.Logger, _logClassId, classID ),
 
 					Expression.Assign(
 						targetNode,

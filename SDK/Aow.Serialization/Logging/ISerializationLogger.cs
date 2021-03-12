@@ -6,6 +6,7 @@ namespace Aow2.Serialization.Logging
 	{
 		void LogFieldStart( int fieldId );
 		void LogFieldEnd();
+		void LogClassId( int classId );
 		void LogBlob( Stream stream, long offset, long length );
 	}
 }

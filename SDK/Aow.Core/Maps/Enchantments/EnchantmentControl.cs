@@ -8,6 +8,6 @@ namespace Aow2.Maps.Enchantments
 
 		[Field( 0x1e )] public AowList<Enchantment> List { get; private set; }
 
-		[Field( 0x1f )] public int _int1f;
+		[Field( 0x1f )] public int? _int1f;
 	}
 }

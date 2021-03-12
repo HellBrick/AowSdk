@@ -16,7 +16,7 @@ namespace Aow2.Test.Serialization
 		private IFormatterBuilder _builder = new PolymorphClassFormatterBuilder();
 		private Formatter<AbstractMock> _formatter;
 
-		private DerivedOne _derivedOne = new DerivedOne() { A0 = 0x42, B0 = 0x53 };
+		private DerivedOne _derivedOne = new DerivedOne() { I30 = 0x42, I40 = 0x53 };
 
 		[SetUp]
 		public void Initialize() => _formatter = _builder.Create( typeof( AbstractMock ) ) as Formatter<AbstractMock>;

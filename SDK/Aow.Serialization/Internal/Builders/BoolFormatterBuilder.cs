@@ -12,7 +12,11 @@ namespace Aow2.Serialization.Internal.Builders
 			{
 			}
 
-			public override bool Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger ) => true;
+			public override bool Deserialize( Stream inStream, long offset, long length, ISerializationLogger logger )
+			{
+				logger.LogBlob( inStream, offset, length );
+				return true;
+			}
 
 			public override bool ShouldSkipField( bool value ) => !value;
 		}

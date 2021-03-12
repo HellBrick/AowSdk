@@ -35,7 +35,7 @@ namespace Aow2.Maps
 
 		[Field( 0x36 )] public PlayerEmailSettings EmailSettings { get; set; }
 
-		[Field( 0x40 )] public bool NoSpawnAnimation { get; set; }
+		[Field( 0x40 )] public PersistentBool? NoSpawnAnimation { get; set; }
 
 		[Field( 0x05 )] public int Gold { get; set; }
 		[Field( 0x06 )] public int? ExternalGoldIncome { get; set; }
